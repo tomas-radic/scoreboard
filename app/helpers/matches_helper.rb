@@ -3,7 +3,7 @@ module MatchesHelper
 
     content_tag :tr, class: decoration_class_for(match) do
       result = content_tag :td do
-        check_box_tag :completed, :completed, match.completed?, disabled: true
+        check_box_tag :finished, :finished, match.finished?, disabled: true
       end
 
       result += content_tag :td do
@@ -23,12 +23,12 @@ module MatchesHelper
   end
 
   def decoration_class_for(match)
-    if match.completed?
+    if match.finished?
       'table-secondary'
     elsif match.started?
       'table-warning'
     else
-      'table-info'
+      'table-success'
     end
   end
 end

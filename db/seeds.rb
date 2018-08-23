@@ -18,7 +18,8 @@ def recreate_tournament_for(user)
               GameSet.new(score: [6, 3])
             ],
             started_at: 2.hours.ago,
-            completed_at: 30.minutes.ago
+            finished_at: 30.minutes.ago,
+            not_before: Time.zone.parse('9:00')
           ),
           Match.new(
             label: "#{Faker::Name.name} - #{Faker::Name.name}",
@@ -41,7 +42,8 @@ def recreate_tournament_for(user)
               GameSet.new(score: [4, 6]),
               GameSet.new(score: [5, 2])
             ],
-            started_at: 80.minutes.ago
+            started_at: 80.minutes.ago,
+            not_before: Time.zone.parse('12:00')
           ),
           Match.new(
             label: "#{Faker::Name.name} - #{Faker::Name.name}"

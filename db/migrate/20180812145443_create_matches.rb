@@ -5,7 +5,7 @@ class CreateMatches < ActiveRecord::Migration[5.1]
       t.integer :position,        null: false
       t.time :not_before
       t.datetime :started_at
-      t.datetime :completed_at
+      t.datetime :finished_at
       t.uuid :court_id,           null: false
 
       t.timestamps

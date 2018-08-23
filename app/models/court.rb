@@ -5,13 +5,11 @@ class Court < ApplicationRecord
 
   validates :label, presence: true
 
-  default_scope { order(:label) }
-
   def current_match
-    self.matches.where(completed_at: nil).where.not(started_at: nil).first
+    self.matches.where(finished_at: nil).where.not(started_at: nil).first
   end
 
   def next_match
-    self.matches.where(completed_at: nil, started_at: nil).first
+    self.matches.where(finished_at: nil, started_at: nil).first
   end
 end

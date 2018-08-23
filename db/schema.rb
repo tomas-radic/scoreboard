@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180812150145) do
     t.integer "position", null: false
     t.time "not_before"
     t.datetime "started_at"
-    t.datetime "completed_at"
+    t.datetime "finished_at"
     t.uuid "court_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

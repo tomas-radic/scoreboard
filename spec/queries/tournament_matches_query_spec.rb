@@ -19,6 +19,7 @@ describe TournamentMatchesQuery do
 
   it "Returns matches belonging to given user's tournament" do
     matches = subject
+    
     expect(matches.count).to eq 3
     expect(matches.pluck(:id)).to match_array [match111.id, match121.id, match122.id]
   end

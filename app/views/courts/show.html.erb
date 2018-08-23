@@ -5,19 +5,23 @@
         <th scope="col"></th>
         <th scope="col">Label</th>
         <th scope="col">Score</th>
+        <th scope="col">Not before</th>
       </tr>
     </thead>
     <tbody>
       <% @court.matches.includes(:game_sets).each do |match| %>
         <tr class="<%= decoration_class_for match %>">
           <td>
-            <%= check_box_tag :completed, :completed, match.completed?, disabled: true %>
+            <%= check_box_tag :finished, :finished, match.finished?, disabled: true %>
           </td>
           <td>
             <%= match.label %>
           </td>
           <td>
             <%= Score.result_for match %>
+          </td>
+          <td>
+            <%= NotBeforeInfo.result_for match %>
           </td>
         </tr>
       <% end %>

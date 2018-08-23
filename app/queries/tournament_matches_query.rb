@@ -4,10 +4,9 @@ class TournamentMatchesQuery < Patterns::Query
   private
 
   def query
-    Pundit.policy_scope(user, relation).unscoped
+    Pundit.policy_scope(user, relation)
         .includes(:game_sets)
-        .order(:completed_at, :started_at)
-        .order('matches.position asc')
+        .order(:finished_at, :started_at, :position)
   end
 
   def user

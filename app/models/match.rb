@@ -7,13 +7,15 @@ class Match < ApplicationRecord
 
   acts_as_list scope: :court
 
-  default_scope { order(:position) }
-
   def started?
-    self.started_at.present? || self.completed_at.present?
+    self.started_at.present? || self.finished_at.present?
   end
 
-  def completed?
-    self.completed_at.present?
+  def finished?
+    self.finished_at.present?
+  end
+
+  def scheduled?
+    self.not_before.present?
   end
 end

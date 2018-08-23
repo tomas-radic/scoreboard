@@ -1,0 +1,15 @@
+<%= form_for @tournament do |f| %>
+  <div class="form-group">
+    <%= f.label :label %>
+    <%= f.text_field :label, class: 'form-control' %>
+  </div>
+  <hr/>
+  <%= f.fields_for :courts do |cf| %>
+    <%= render 'court_fields', f: cf %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'add court', f, :courts %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+<% end %>

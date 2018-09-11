@@ -43,6 +43,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    attr_extras (5.2.0)
     autoprefixer-rails (9.1.0)
       execjs
     axiom-types (0.1.1)
@@ -99,6 +100,8 @@ GEM
     faker (1.9.1)
       i18n (>= 0.7)
     ffi (1.9.25)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.1.0)
@@ -255,6 +258,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  attr_extras
   bootstrap
   byebug
   capybara (~> 2.13)
@@ -263,6 +267,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

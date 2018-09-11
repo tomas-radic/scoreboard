@@ -1,0 +1,58 @@
+<%= form_for [@tournament, @match] do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :participant1 %>
+        <%= f.text_field :participant1, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :participant2 %>
+        <%= f.text_field :participant2, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= f.label :court_id %>
+        <%= f.select :court_id, @tournament.courts.map { |c| [c.label, c.id] }, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= label_tag :max_sets_to_play %>
+        <%= number_field_tag :max_sets_to_play, @match.game_sets.size, min: 1, step: 2, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group form-check">
+        <%= check_box_tag :started, '1', @match.started_at.present?, class: 'form-check-input' %>
+        <label class="form-check-label" for="started"><%= match_started_label @match %></label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group form-check">
+        <%= check_box_tag :finished, '1', @match.finished_at.present?, class: 'form-check-input' %>
+        <label class="form-check-label" for="finished"><%= match_finished_label @match %></label>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= f.label :not_before %>
+        <%= f.time_select :not_before, { minute_step: 15, include_blank: true } %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit 'Submit' %>
+<% end %>

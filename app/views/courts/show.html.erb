@@ -1,32 +1,19 @@
 <% if @court.matches.any? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Label</th>
-        <th scope="col">Score</th>
-        <th scope="col">Not before</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @court.matches.includes(:game_sets).each do |match| %>
-        <tr class="<%= decoration_class_for match %>">
-          <td>
-            <%= check_box_tag :finished, :finished, match.finished?, disabled: true %>
-          </td>
-          <td>
-            <%= match.label %>
-          </td>
-          <td>
-            <%= Score.result_for match %>
-          </td>
-          <td>
-            <%= NotBeforeInfo.result_for match %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Label</th>
+      <th scope="col">Score</th>
+      <th scope="col">Not Before</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @court.matches.includes(:game_sets).order(:finished_at, :started_at, :position).each do |match| %>
+      <%= court_matches_row_for match %>
+    <% end %>
+  </tbody>
+</table>
 <% else %>
   <p>No matches.</p>
 <% end %>

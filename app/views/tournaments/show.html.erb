@@ -1,2 +1,7 @@
-<%= render 'header' %>
-<%= render 'courts' %>
+<%= render 'shared/header' %>
+<% if @tournament.present? %>
+  <div class="row" id="courts">
+    <%= render 'courts' %>
+    
+  </div>
+<% end %>

@@ -1,5 +1,3 @@
-<div class="row">
-  <% @tournament.courts.order(:label).includes(matches: :game_sets).each do |court| %>
-    <%= render partial: 'court', locals: { court: court } %>
-  <% end %>
-</div>
+<% @tournament.courts.order(:label).includes(matches: :game_sets).each do |court| %>
+  <%= render partial: 'court', locals: { court: court } %>
+<% end %>

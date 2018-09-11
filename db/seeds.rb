@@ -11,7 +11,8 @@ def recreate_tournament_for(user)
         label: '1',
         matches: [
           Match.new(
-            label: "#{Faker::Name.name} - #{Faker::Name.name}",
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
             game_sets: [
               GameSet.new(score: [6, 4]),
               GameSet.new(score: [3, 6]),
@@ -22,14 +23,23 @@ def recreate_tournament_for(user)
             not_before: Time.zone.parse('9:00')
           ),
           Match.new(
-            label: "#{Faker::Name.name} - #{Faker::Name.name}",
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
             game_sets: [
-              GameSet.new(score: [1, 4])
+              GameSet.new(score: [1, 4]),
+              GameSet.new,
+              GameSet.new
             ],
             started_at: 20.minutes.ago
           ),
           Match.new(
-            label: "#{Faker::Name.name} - #{Faker::Name.name}"
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
+            game_sets: [
+              GameSet.new,
+              GameSet.new,
+              GameSet.new
+            ]
           )
         ]
       ),
@@ -37,16 +47,24 @@ def recreate_tournament_for(user)
         label: '2',
         matches: [
           Match.new(
-            label: "#{Faker::Name.name} - #{Faker::Name.name}",
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
             game_sets: [
               GameSet.new(score: [4, 6]),
-              GameSet.new(score: [5, 2])
+              GameSet.new(score: [5, 2]),
+              GameSet.new
             ],
             started_at: 80.minutes.ago,
             not_before: Time.zone.parse('12:00')
           ),
           Match.new(
-            label: "#{Faker::Name.name} - #{Faker::Name.name}"
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
+            game_sets: [
+              GameSet.new,
+              GameSet.new,
+              GameSet.new
+            ]
           )
         ]
       ),
@@ -54,8 +72,14 @@ def recreate_tournament_for(user)
         label: '3',
         matches: [
           Match.new(
-            label: "#{Faker::Name.name} - #{Faker::Name.name}",
-            not_before: Time.zone.parse('15:00')
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
+            not_before: Time.zone.parse('15:00'),
+            game_sets: [
+              GameSet.new,
+              GameSet.new,
+              GameSet.new
+            ]
           )
         ]
       ),
@@ -70,6 +94,17 @@ end
 
 user = User.where(
   email: 'tomas.radic@gmail.com'
+).first_or_create!(
+  password: 'Password',
+  password_confirmation: 'Password'
+)
+
+if user.tournament.nil?
+  recreate_tournament_for user
+end
+
+user = User.where(
+  email: 'someone.else@gmail.com'
 ).first_or_create!(
   password: 'Password',
   password_confirmation: 'Password'

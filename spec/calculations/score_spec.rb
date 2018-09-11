@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-shared_examples 'Returning empty string' do
-  it 'Returns empty string' do
-    expect(subject).to eq ''
+shared_examples 'Indicating no score' do
+  it 'Returns dash' do
+    expect(subject).to eq '-'
   end
 end
 
@@ -20,13 +20,13 @@ describe Score do
   let!(:match) { FactoryBot.create(:match) }
 
   context 'With match not having any sets' do
-    it_behaves_like 'Returning empty string'
+    it_behaves_like 'Indicating no score'
   end
 
   context 'With match having a set with nil score' do
     let!(:set1) { FactoryBot.create(:game_set, match: match) }
 
-    it_behaves_like 'Returning empty string'
+    it_behaves_like 'Indicating no score'
   end
 
   context 'With match having a set with invalid score' do

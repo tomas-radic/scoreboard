@@ -18,6 +18,7 @@ class Score < Patterns::Calculation
       return e.message
     end
 
+    return '-' if result.empty?
     result.compact.join(', ')
   end
 

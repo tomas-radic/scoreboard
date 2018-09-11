@@ -1,7 +1,8 @@
 class CreateMatches < ActiveRecord::Migration[5.1]
   def change
     create_table :matches, id: :uuid do |t|
-      t.string :label,            null: false
+      t.string :participant1,     null: false
+      t.string :participant2,     null: false
       t.integer :position,        null: false
       t.time :not_before
       t.datetime :started_at

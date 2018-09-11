@@ -3,19 +3,26 @@
     <% if current_match.present? %>
       <li class="list-group-item">
         <p class="card-text">
-          <%= current_match.label %><br/>
+          <%= court_label_for current_match %><br>
           <%= Score.result_for current_match %>
         </p>
-        <p class="card-text"><small class="text-muted">
-          <%= time_ago_in_words current_match.updated_at %></small>
+        <p class="card-text">
+          <small class="text-muted">
+            <%= latest_score_update current_match %>
+          </small>
+          <%= link_to refresh_score_tournament_path(@tournament), remote: true do %>
+            <%= fa_icon "retweet" %>
+          <% end %>
+
         </p>
       </li>
     <% end %>
     <% if next_match.present? %>
       <li class="list-group-item">
-        next: <%= next_match.label %>
+        next:<br>
+        <%= court_label_for next_match %>
         <% unless next_match.not_before.blank? %>
-          <br/><small>not before <%= next_match.not_before.strftime('%k:%M') %></small>
+          <br><small>not before <%= next_match.not_before.localtime.strftime('%k:%M') %></small>
         <% end %>
       </li>
     <% end %>

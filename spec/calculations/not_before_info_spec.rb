@@ -27,7 +27,7 @@ describe NotBeforeInfo do
     context 'Started but not finished yet' do
       let!(:match) { FactoryBot.create(:match, :started, not_before: Time.zone.parse('9:00')) }
 
-      it_behaves_like 'Returning time information'
+      it_behaves_like 'Returning empty string'
     end
 
     context 'Finished already' do

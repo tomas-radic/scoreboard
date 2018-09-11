@@ -3,7 +3,7 @@ class CreateGameSets < ActiveRecord::Migration[5.1]
     create_table :game_sets, id: :uuid do |t|
       t.uuid :match_id,         null: false
       t.integer :position,      null: false
-      t.text :score,            array: true, null: false, default: []
+      t.integer :score,         array: true, null: false, default: []
 
       t.timestamps
     end

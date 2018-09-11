@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :match do
     association :court
-    label { Faker::Lorem.word }
+    participant1 { Faker::Name.name }
+    participant2 { Faker::Name.name }
 
     trait :started do
       started_at { 2.hours.ago }

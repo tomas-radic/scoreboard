@@ -1,22 +1,17 @@
 class MatchPolicy < ApplicationPolicy
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user  = user
-      @scope = scope
-    end
-
-    def resolve
-      if user.tournament.present?
-        user.tournament.matches
-      else
-        scope.none
-      end
-    end
+  def new?
+    create?
   end
 
-  def index?
+  def create?
     user.present?
+  end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    user.present? && user.tournament.try(:id) == record.tournament.id
   end
 end

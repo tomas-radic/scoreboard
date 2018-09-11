@@ -1,0 +1,40 @@
+<h1><%= @match.label %></h1>
+<%= form_tag update_score_tournament_match_path(@tournament, @match) do %>
+  <% @match.game_sets.each do |game_set| %>
+    <hr/>
+    <h3><%= "Set #{game_set.position}" %></h3>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <div class="field">
+            <%= number_field_tag :score, game_set.score.first, min: 0, step: 1,
+                name: "score[#{game_set.position-1}][]", class: 'float-right text-right' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <div class="field">
+            <%= number_field_tag :score, (game_set.score.last), min: 0, step: 1,
+                name: "score[#{game_set.position-1}][]", class: 'float-left text-left' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="form-group form-check">
+      <%= check_box_tag :finished, '1', @match.finished_at.present?, class: 'form-check-input' %>
+      <label class="form-check-label" for="finished"><%= match_finished_label @match %></label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="text-center">
+        <p><%= submit_tag :submit, class: 'btn btn-md btn-success' %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

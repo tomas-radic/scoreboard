@@ -1,0 +1,21 @@
+<script>
+  function updateScoreTimeInfo() {
+    $('.score-time-info').each(function() {
+      minutes = parseInt($(this).text(), 10);
+      if (minutes < 60) {
+        minutes++;
+        var timeInfo = minutes.toString();
+        if (minutes == 60) {
+          timeInfo = '>' + timeInfo;
+        }
+        $(this).text(timeInfo);
+      }
+    });
+  }
+
+  $(document).on('turbolinks:load', function() {
+    var timerID = setInterval(function() {
+        updateScoreTimeInfo();
+    }, 60000);
+  });
+</script>

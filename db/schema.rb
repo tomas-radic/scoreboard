@@ -27,14 +27,15 @@ ActiveRecord::Schema.define(version: 20180812150145) do
   create_table "game_sets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "match_id", null: false
     t.integer "position", null: false
-    t.text "score", default: [], null: false, array: true
+    t.integer "score", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["match_id"], name: "index_game_sets_on_match_id"
   end
 
   create_table "matches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "label", null: false
+    t.string "participant1", null: false
+    t.string "participant2", null: false
     t.integer "position", null: false
     t.time "not_before"
     t.datetime "started_at"

@@ -1,11 +1,13 @@
 class TournamentsController < ApplicationController
+  before_action :load_tournament, only: [:show, :edit, :update, :destroy, :refresh_score]
+
   def index
     redirect_to new_user_session_path and return unless user_signed_in?
     redirect_to current_user.tournament and return if current_user.tournament.present?
   end
 
   def show
-    @tournament = Tournament.find(params[:id])
+    redirect_to root_url if @tournament.nil? && user_signed_in?
   end
 
   def new
@@ -22,12 +24,10 @@ class TournamentsController < ApplicationController
   end
 
   def edit
-    @tournament = Tournament.find(params[:id])
     authorize @tournament
   end
 
   def update
-    @tournament = Tournament.find(params[:id])
     authorize @tournament
     @tournament.assign_attributes whitelisted_params
     @tournament.save
@@ -35,13 +35,23 @@ class TournamentsController < ApplicationController
   end
 
   def destroy
-    @tournament = Tournament.find(params[:id])
     authorize @tournament
     @tournament.destroy
     redirect_to tournaments_path
   end
 
+  def refresh_score
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   private
+
+  def load_tournament
+    @tournament = Tournament.find_by(id: params[:id])
+  end
 
   def whitelisted_params
     params.require(:tournament).permit(:label, courts_attributes: [:label, :id, :_destroy])

@@ -6,11 +6,12 @@
         <th scope="col">Label</th>
         <th scope="col">Court</th>
         <th scope="col">Score</th>
+        <th scope="col">Not Before</th>
       </tr>
     </thead>
     <tbody>
       <% @matches.each do |match| %>
-        <%= row_for match %>
+        <%= all_matches_row_for match %>
       <% end %>
     </tbody>
   </table>

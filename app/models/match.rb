@@ -2,10 +2,15 @@ class Match < ApplicationRecord
 
   belongs_to :court
   has_many :game_sets, dependent: :destroy
+  delegate :tournament, to: :court
 
-  validates :label, presence: true
+  validates :participant1, :participant2, presence: true
 
   acts_as_list scope: :court
+
+  def label
+    "#{participant1} vs #{participant2}"
+  end
 
   def started?
     self.started_at.present? || self.finished_at.present?

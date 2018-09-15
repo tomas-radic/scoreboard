@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     session.delete :stored_location
   end
 
-  def stored_location
-    session[:stored_location]
+  def stored_location(fallback:)
+    session[:stored_location] || fallback
   end
 end

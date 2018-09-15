@@ -34,7 +34,7 @@
     <div class="col">
       <div class="text-center">
         <p><%= submit_tag :submit, class: 'btn btn-lg btn-success' %></p>
-        <p><%= link_to 'Quit', session[:stored_location] || tournament_path(@tournament) %></p>
+        <p><%= link_to 'Quit', @back_path %></p>
       </div>
     </div>
   </div>

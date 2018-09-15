@@ -3,7 +3,7 @@
     <% if current_match.present? %>
       <li class="list-group-item">
         <p class="card-text">
-          <%= court_label_for current_match %><br>
+          <strong><%= court_label_for current_match %><br></strong>
           <%= Score.result_for current_match %>
         </p>
         <p class="card-text">
@@ -18,11 +18,13 @@
     <% end %>
     <% if next_match.present? %>
       <li class="list-group-item">
-        next:<br>
-        <%= court_label_for next_match %>
-        <% unless next_match.not_before.blank? %>
-          <br><small>not before <%= next_match.not_before.strftime('%k:%M') %></small>
-        <% end %>
+        <small>
+          next:<br>
+          <%= court_label_for next_match %>
+          <% unless next_match.not_before.blank? %>
+            <br>not before <%= next_match.not_before.strftime('%k:%M') %>
+          <% end %>
+        </small>
       </li>
     <% end %>
   </ul>

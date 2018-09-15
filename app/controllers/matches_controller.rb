@@ -12,6 +12,7 @@ class MatchesController < ApplicationController
   end
 
   def new
+    authorize Match
     @match = Match.new(
       court_id: params[:court_id],
       game_sets: [
@@ -21,14 +22,14 @@ class MatchesController < ApplicationController
       ]
     )
 
-    authorize @match
+    @back_path = stored_location(fallback: tournament_path(@tournament))
   end
 
   def create
     authorize(Match)
 
     if CreateMatch.call(current_user.tournament, params)
-      redirect_to(stored_location || tournament_matches_path(@tournament)) and forget_location
+      redirect_to(stored_location(fallback: tournament_matches_path(@tournament))) and forget_location
     else
       render :new
     end
@@ -36,13 +37,14 @@ class MatchesController < ApplicationController
 
   def edit
     authorize @match
+    @back_path = stored_location(fallback: tournament_path(@tournament))
   end
 
   def update
     authorize @match
 
     if UpdateMatch.call(@match, params)
-      redirect_to(stored_location || tournament_matches_path(@tournament)) and forget_location
+      redirect_to(stored_location(fallback: tournament_matches_path(@tournament))) and forget_location
     else
       render :edit
     end
@@ -53,6 +55,7 @@ class MatchesController < ApplicationController
   end
 
   def edit_score
+    @back_path = stored_location(fallback: tournament_path(@tournament))
   end
 
   def update_score

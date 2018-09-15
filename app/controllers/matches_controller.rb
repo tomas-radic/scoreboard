@@ -51,7 +51,8 @@ class MatchesController < ApplicationController
   end
 
   def destroy
-
+    @match.destroy
+    redirect_to stored_location(fallback: tournament_path(@tournament))
   end
 
   def edit_score

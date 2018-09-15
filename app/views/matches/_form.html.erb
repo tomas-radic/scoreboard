@@ -58,5 +58,8 @@
   <p class="text-right">
     <%= link_to 'Back', @back_path, class: 'btn btn-lg btn-outline-success my-1' %>
     <%= f.submit 'Submit', class: 'btn btn-lg btn-success my-1' %>
+    <% if @match.persisted? %>
+      <%= link_to 'Delete', tournament_match_path(@tournament, @match), method: :delete, data: { confirm: 'Sure to delete this match?' } %>
+    <% end %>
   </p>
 <% end %>

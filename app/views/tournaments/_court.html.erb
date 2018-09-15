@@ -1,8 +1,8 @@
 <div class="col-md-4">
-  <div class="card card-block text-center m-1" style="width: 18rem;">
+  <div class="card card-block text-center my-1 background-clay-dark">
     <div class="card-body">
       <h5 class="card-title"><%= court.label %></h5>
-      <% if court.matches.any? %>
+      <% if court.matches.where(finished_at: nil).any? %>
         <%= render partial: 'play_info',
             locals: { current_match: court.current_match, next_match: court.next_match } %>
       <% else %>

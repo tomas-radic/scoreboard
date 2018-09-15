@@ -21,7 +21,7 @@
         next:<br>
         <%= court_label_for next_match %>
         <% unless next_match.not_before.blank? %>
-          <br><small>not before <%= next_match.not_before.localtime.strftime('%k:%M') %></small>
+          <br><small>not before <%= next_match.not_before.strftime('%k:%M') %></small>
         <% end %>
       </li>
     <% end %>

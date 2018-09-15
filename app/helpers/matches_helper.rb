@@ -39,11 +39,11 @@ module MatchesHelper
 
   def decoration_class_for(match)
     if match.finished?
-      'table-secondary'
+      'color-dust'
     elsif match.started?
-      'table-warning'
+      'background-highlight'
     else
-      'table-success'
+      'background-clay-dark'
     end
   end
 

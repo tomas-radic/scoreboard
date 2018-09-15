@@ -1,16 +1,39 @@
-body {
-  background-color: #e2ab89;
-}
-
-.navbar, .card, .card li {
-  background-color: #e0a27b;
+.card li {
+  background-color: inherit;
 }
 
 a {
   color: inherit;
 }
 
+.table thead th {
+  border-bottom: 1px solid #e0a27b;
+}
+
+.table th, .table td {
+  border-top: none;
+}
+
+table {
+  border-color: #e2ab89;
+}
+
 .jumbotron {
   border-radius: 0;
+}
+
+.background-clay-dark {
   background-color: #e0a27b;
+}
+
+.background-clay-light {
+  background-color: #e2ab89;
+}
+
+.background-highlight {
+  background-color: #f1d37b;
+}
+
+.color-dust {
+  color: #9a8383;
 }

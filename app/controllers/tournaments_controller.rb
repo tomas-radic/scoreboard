@@ -13,7 +13,13 @@ class TournamentsController < ApplicationController
 
   def new
     authorize Tournament
-    @tournament = Tournament.new
+    @tournament = Tournament.new(
+      courts: [
+        Court.new(label: '1'),
+        Court.new(label: '2'),
+        Court.new(label: '3')
+      ]
+    )
   end
 
   def create

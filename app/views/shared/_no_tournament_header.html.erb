@@ -1,0 +1,13 @@
+<h2>No tournament here.</h2>
+<% if policy(Tournament).create? %>
+  <p>
+    <em>Press button bellow to open new tournament.</em>
+  </p>
+  <p>
+    <%= link_to 'Open Tournament', new_tournament_path, class: 'btn btn-lg btn-success my-1' %>
+  </p>
+<% else %>
+  <p>
+    <em>But ... <b>keep training!</b></em>
+  </p>
+<% end %>

@@ -1,13 +1,11 @@
 module MatchesHelper
-  def all_matches_row_for(match)
-    render_organizer = user_signed_in? && policy(current_user.tournament).manage?
-
+  def all_matches_row_for(match, update_allowed, score_update_allowed)
     content_tag :tr, class: decoration_class_for(match) do
       result = content_tag :td do
         check_box_tag :finished, :finished, match.finished?, disabled: true
       end
 
-      if render_organizer
+      if update_allowed
         result += content_tag :td do
           link_to match.label, edit_tournament_match_path(match.tournament, match)
         end
@@ -18,10 +16,10 @@ module MatchesHelper
       end
 
       result += content_tag :td do
-        match.court.label
+        link_to match.court.label, tournament_court_path(match.tournament, match.court)
       end
 
-      if render_organizer
+      if score_update_allowed
         result += content_tag :td do
           link_to Score.result_for(match), edit_score_tournament_match_path(match.tournament, match)
         end
@@ -51,13 +49,13 @@ module MatchesHelper
 
   def match_started_label(match)
     result = "Match started"
-    result += " (#{match.started_at.localtime.strftime('%k:%M')})" if match.started?
+    result += " (#{match.started_at.localtime.strftime('%H:%M')})" if match.started_at.present?
     result
   end
 
   def match_finished_label(match)
     result = "Match finished"
-    result += " (#{match.finished_at.localtime.strftime('%k:%M')})" if match.finished?
+    result += " (#{match.finished_at.localtime.strftime('%H:%M')})" if match.finished_at.present?
     result
   end
 

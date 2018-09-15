@@ -1,15 +1,19 @@
 class MatchesController < ApplicationController
+  before_action :authenticate_user!, except: [:edit_score, :update_score]
   before_action :load_tournament
   before_action :load_match, only: [:edit, :update, :edit_score, :update_score, :destroy]
   before_action :preprocess_params, only: [:create, :update]
 
   def index
     @matches = TournamentMatchesQuery.call(tournament: @tournament)
+    @matches_updatable = policy(@tournament).update_matches?
+    @scores_updatable = policy(@tournament).update_scores?
     store_location
   end
 
   def new
     @match = Match.new(
+      court_id: params[:court_id],
       game_sets: [
         GameSet.new,
         GameSet.new,

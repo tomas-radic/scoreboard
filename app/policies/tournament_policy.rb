@@ -23,4 +23,12 @@ class TournamentPolicy < ApplicationPolicy
   def destroy?
     manage?
   end
+
+  def update_matches?
+    user.present? && record.id == user.tournament.id
+  end
+
+  def update_scores?
+    update_matches? || record.public_score_update?
+  end
 end

@@ -1,14 +1,28 @@
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light mb-2">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if @tournament.present? %>
+        <li class="nav-item">
+          <%= link_to 'Tournament', tournament_path(@tournament), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Matches', tournament_matches_path(@tournament), class: 'nav-link' %>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

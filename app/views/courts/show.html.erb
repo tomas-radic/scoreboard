@@ -1,19 +1,29 @@
+<%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
+<p>
+  <% if policy(Match).create? %>
+    <%= link_to 'Add match', new_tournament_court_match_path(@tournament, @court), class: 'btn btn-sm btn-success my-1' %>
+  <% end %>
+  <span class="float-right"><strong>Court <%= @court.label %> matches</strong></span>
+</p>
 <% if @court.matches.any? %>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Label</th>
-      <th scope="col">Score</th>
-      <th scope="col">Not Before</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @court.matches.includes(:game_sets).order(:finished_at, :started_at, :position).each do |match| %>
-      <%= court_matches_row_for match %>
-    <% end %>
-  </tbody>
-</table>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Label</th>
+          <th scope="col">Score</th>
+          <th scope="col">Not Before</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @court.matches.includes(:game_sets).order(:finished_at, :started_at, :position).each do |match| %>
+          <%= court_matches_row_for match, @matches_updatable, @scores_updatable %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <p>No matches.</p>
 <% end %>

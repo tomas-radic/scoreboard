@@ -1,4 +1,5 @@
 class TournamentsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :refresh_score]
   before_action :load_tournament, only: [:show, :edit, :update, :destroy, :refresh_score]
 
   def index
@@ -54,7 +55,8 @@ class TournamentsController < ApplicationController
   end
 
   def whitelisted_params
-    params.require(:tournament).permit(:label, courts_attributes: [:label, :id, :_destroy])
+    params.require(:tournament).permit(
+      :label, :public_score_update, courts_attributes: [:label, :id, :_destroy]
+    )
   end
-
 end

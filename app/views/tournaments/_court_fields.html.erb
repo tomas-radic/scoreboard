@@ -1,9 +1,9 @@
 <div class="nested-fields">
-  <div class="form-group">
+  <div class="form-group clearfix">
     <div class="field">
       <%= f.label :label %>
-      <%= f.text_field :label %>
+      <%= f.text_field :label, class: 'form-control' %>
     </div>
-    <%= link_to_remove_association "remove court", f %>
+    <%= link_to_remove_association '', f, class: 'float-right' %>
   </div>
 </div>

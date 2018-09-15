@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   root to: 'tournaments#index'
 
   resources :tournaments do
+    resources :courts do
+      resources :matches, only: [:new]
+    end
     resources :matches do
       get :edit_score, on: :member
       post :update_score, on: :member
     end
     get :refresh_score, on: :member
   end
-
-  resources :courts
 end

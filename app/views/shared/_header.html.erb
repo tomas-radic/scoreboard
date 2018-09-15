@@ -1,1 +1,7 @@
-<%= tournament_header_for @tournament %>
+<div class="jumbotron my-0 pb-1 pt-4">
+  <% if @tournament.present? %>
+    <%= render 'shared/tournament_header' %>
+  <% else %>
+    <%= render 'shared/no_tournament_header' %>
+  <% end %>
+</div>

@@ -1,7 +1,9 @@
 <%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
 <% if @tournament.present? %>
-  <div class="row" id="courts">
+  <div class="row row-eq-height" id="courts">
     <%= render 'courts' %>
-    
   </div>
+<% else %>
+  <p>This tournament has finished.</p>
 <% end %>

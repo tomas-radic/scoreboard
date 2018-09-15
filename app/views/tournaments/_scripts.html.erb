@@ -1,0 +1,20 @@
+<script>
+  function removeLinkIcons() {
+    var removeLinks = $('.remove_fields');
+    $(removeLinks).html('');
+    $(removeLinks).append('<%= fa_icon "times" %>');
+  }
+
+  $('#courts').on('cocoon:before-insert', function(e, insertedItem) {
+    var calculatedCourtNr = $('#courts').find(".field").length + 1;
+    $(insertedItem.find("input")[0]).val(calculatedCourtNr);
+  });
+
+  $('#courts').on('cocoon:after-insert', function(e, insertedItem) {
+    removeLinkIcons();
+  });
+
+  $(document).on('turbolinks:load', function() {
+    removeLinkIcons();
+  });
+</script>

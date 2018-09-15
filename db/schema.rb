@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20180812150145) do
   create_table "tournaments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "label", null: false
+    t.boolean "public_score_update", default: false, null: false
     t.datetime "approved_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

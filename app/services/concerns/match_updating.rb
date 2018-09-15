@@ -42,14 +42,15 @@ module MatchUpdating
   end
 
   def set_match_state
+    now = Time.zone.now
     if attributes[:started] == '1'
-      match.started_at ||= Time.zone.now
+      match.started_at ||= now
     else
       match.started_at = nil
     end
 
     if attributes[:finished] == '1'
-      match.finished_at ||= Time.zone.now
+      match.finished_at ||= now
     else
       match.finished_at = nil
     end

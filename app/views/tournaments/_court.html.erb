@@ -1,5 +1,5 @@
-<div class="col-12 col-md-4">
-  <div class="card card-block text-center" style="width: 18rem;">
+<div class="col-md-4">
+  <div class="card card-block text-center m-1" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title"><%= court.label %></h5>
       <% if court.matches.any? %>
@@ -12,7 +12,7 @@
           </ul>
         </p>
       <% end %>
-      <div><%= link_to 'Go to court', court, class: 'btn btn-sm btn-success' %></div>
+      <div><%= link_to 'Go to court', tournament_court_path(@tournament, court), class: 'btn btn-sm btn-success' %></div>
     </div>
   </div>
 </div>

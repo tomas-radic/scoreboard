@@ -12,6 +12,6 @@ class MatchPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user.tournament.try(:id) == record.tournament.id
+    user&.tournament&.id == record.tournament.id
   end
 end

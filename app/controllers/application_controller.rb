@@ -17,4 +17,18 @@ class ApplicationController < ActionController::Base
   def stored_location(fallback:)
     session[:stored_location] || fallback
   end
+
+  def set_tournament_progress
+    matches_count = @tournament.matches.count
+    return unless matches_count > 0
+
+    finished_percentage = ((@tournament.matches.finished.count * 100) / matches_count).round
+    in_progress_percentage = ((@tournament.matches.in_progress.count * 100) / matches_count).round
+    upcoming_percentage = 100 - finished_percentage - in_progress_percentage
+    @tournament_progress = {
+      finished: finished_percentage,
+      in_progress: in_progress_percentage,
+      upcoming: upcoming_percentage
+    }
+  end
 end

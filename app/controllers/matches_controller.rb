@@ -3,6 +3,7 @@ class MatchesController < ApplicationController
   before_action :load_tournament
   before_action :load_match, only: [:edit, :update, :edit_score, :update_score, :destroy]
   before_action :preprocess_params, only: [:create, :update]
+  before_action :set_tournament_progress
 
   def index
     @matches = TournamentMatchesQuery.call(tournament: @tournament)

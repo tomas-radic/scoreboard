@@ -1,3 +1,10 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .card {
   min-height: 512px;
 }
@@ -36,6 +43,10 @@ table {
 
 .background-highlight {
   background-color: #f1d37b;
+}
+
+.background-dust {
+  background-color: #9a8383;
 }
 
 .color-dust {

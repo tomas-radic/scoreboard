@@ -8,8 +8,16 @@ class Match < ApplicationRecord
 
   acts_as_list scope: :court
 
+  scope :upcoming, -> { where(started_at: nil, finished_at: nil) }
+  scope :in_progress, -> { where(finished_at: nil).where.not(started_at: nil) }
+  scope :finished, -> { where.not(finished_at: nil) }
+
   def label
     "#{participant1} vs #{participant2}"
+  end
+
+  def in_progress?
+    self.finished_at.nil? && !self.started_at.nil?
   end
 
   def started?

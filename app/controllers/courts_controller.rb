@@ -1,5 +1,6 @@
 class CourtsController < ApplicationController
   before_action :load_tournament
+  before_action :set_tournament_progress
 
   def show
     @court = Court.find(params[:id])

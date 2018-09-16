@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :refresh_score]
   before_action :load_tournament, only: [:show, :edit, :update, :destroy, :refresh_score]
+  before_action :set_tournament_progress, only: :show
 
   def index
     redirect_to new_user_session_path and return unless user_signed_in?
@@ -26,8 +27,11 @@ class TournamentsController < ApplicationController
     authorize Tournament
     @tournament = Tournament.new whitelisted_params
     @tournament.user = current_user
-    @tournament.save
-    redirect_to @tournament
+    if @tournament.save
+      redirect_to @tournament
+    else
+      render :new
+    end
   end
 
   def edit
@@ -37,8 +41,11 @@ class TournamentsController < ApplicationController
   def update
     authorize @tournament
     @tournament.assign_attributes whitelisted_params
-    @tournament.save
-    redirect_to @tournament
+    if @tournament.save
+      redirect_to @tournament
+    else
+      render :edit
+    end
   end
 
   def destroy

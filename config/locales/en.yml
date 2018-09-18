@@ -25,6 +25,7 @@ en:
         need_account: Need account?
         password: Password
         remember_me: Remember me
+  latest_score_update_html: <span class="score-time-info">%{minutes}</span>m ago
   matches:
     edit:
       edit_match: Edit match

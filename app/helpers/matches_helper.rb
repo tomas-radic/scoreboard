@@ -68,7 +68,8 @@ module MatchesHelper
     if minutes_ago >= 60
       '>60m'
     else
-      content_tag(:span, minutes_ago, class: 'score-time-info') + 'm ago'
+      t('latest_score_update_html', minutes: minutes_ago)
+      # content_tag(:span, minutes_ago, class: 'score-time-info') + 'm ago'
     end
   end
 end

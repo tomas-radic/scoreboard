@@ -1,5 +1,5 @@
 <script>
-  function updateScoreTimeInfo() {
+  function incrementScoreTimeInfo() {
     $('.score-time-info').each(function() {
       minutes = parseInt($(this).text(), 10);
       if (minutes < 60) {
@@ -13,9 +13,5 @@
     });
   }
 
-  $(document).on('turbolinks:load', function() {
-    var timerID = setInterval(function() {
-        updateScoreTimeInfo();
-    }, 60000);
-  });
+  setInterval(incrementScoreTimeInfo, 60000);
 </script>

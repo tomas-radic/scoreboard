@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :authenticate_user!, except: [:edit_score, :update_score]
+  before_action :authenticate_user!, except: [:index, :edit_score, :update_score]
   before_action :load_tournament
   before_action :load_match, only: [:edit, :update, :edit_score, :update_score, :destroy]
   before_action :preprocess_params, only: [:create, :update]

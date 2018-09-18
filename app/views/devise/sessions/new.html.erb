@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-md-3 hidden-sm-down"></div>
   <div class="col">
-
-    <h2>Log in</h2>
+    <span class="text-right"><%= switch_locale_link request.url %></span>
+    <h2><%= t '.log_in' %></h2>
     <hr>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="row">
         <div class="col">
           <div class="field form-group">
-            <%= f.label :email %><br />
+            <%= f.label :email, t('.email') %><br />
             <%= f.email_field :email, autofocus: true, class: 'form-control' %>
           </div>
         </div>
@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col">
           <div class="field form-group">
-            <%= f.label :password %><br />
+            <%= f.label :password, t('.password') %><br />
             <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
           </div>
         </div>
@@ -29,7 +29,7 @@
           <div class="col">
             <div class="field form-group form-check">
               <%= f.check_box :remember_me, class: 'form-check-input' %>
-              <label class="form-check-label" for="user_remember_me">Remember me</label>
+              <label class="form-check-label" for="user_remember_me"><%= t '.remember_me' %></label>
             </div>
           </div>
         </div>
@@ -38,8 +38,8 @@
       <div class="row">
         <div class="col">
           <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-lg btn-success my-1' %>
-            <%= link_to "Need account?", new_user_registration_path, class: 'btn btn-lg btn-outline-success my-1' %>
+            <%= f.submit t('.log_in'), class: 'btn btn-lg btn-success my-1' %>
+            <%= link_to t('.need_account'), new_user_registration_path, class: 'btn btn-lg btn-outline-success my-1' %>
           </div>
         </div>
       </div>
@@ -47,13 +47,13 @@
         <div class="col">
           <p>
             <a data-toggle="collapse" href="#forgot-password-instruction" role="button" aria-expanded="false" aria-controls="forgot-password-instruction">
-              Forgotten password?
+              <%= t '.forgotten_password_label' %>
             </a>
           </p>
           <div class="collapse" id="forgot-password-instruction">
-            <div class="card card-body">
-              Sorry, there is no automated email-based process to renew your password yourself. Please, contact me on tomas.radic@gmail.com, or +421 905 289 248 for support.
-            </div>
+            <p class="text-justify">
+              <small><%= t '.forgotten_password_text' %></small>
+            </p>
           </div>
         </div>
       </div>

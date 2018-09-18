@@ -1,0 +1,89 @@
+sk:
+  courts:
+    show:
+      add_match: Pridať zápas
+      court_matches: Zápasy na kurte %{label}
+      label: Zápas
+      not_before: Začiatok najskôr
+      no_matches: Žiadne zápasy.
+      score: Skóre
+  devise:
+    registrations:
+      new:
+        email: Email
+        have_account: Máš už účet?
+        minimum_password_length: (aspoň %{minimum_password_length} znakov)
+        password: Heslo
+        password_confirmation: Potvrdenie hesla
+        sign_up: Registrácia
+    sessions:
+      new:
+        email: Email
+        forgotten_password_label: Zabudnuté heslo?
+        forgotten_password_text: Pardon, žiadny automatický proces na obnovu hesla nemáme. Ozvi sa na tomas.radic@gmail.com, alebo +421 905 289 248 a vyriešime to.
+        log_in: Prihlásenie
+        need_account: Nemáš účet?
+        password: Heslo
+        remember_me: Zapamätať prihlásenie
+  matches:
+    edit:
+      edit_match: Upraviť zápas
+    form:
+      back: Späť
+      court: Kurt
+      delete: Vymazať
+      delete_confirmation: Naozaj vymazať tento zápas?
+      match_finished: Zápas skončený
+      match_started: Zápas začatý
+      max_sets_to_play: Maximálny počet hraných setov
+      not_before: Začiatok najskôr
+      participant1: Účastník 1
+      participant2: Účastník 2
+      submit: Uložiť
+    edit_score:
+      match_finished: Zápas skončený
+      quit: Odísť
+      submit: Uložiť
+    index:
+      add_match: Pridať zápas
+      all_planned_matches: Všetky zápasy
+      court: Kurt
+      label: Zápas
+      no_matches: Žiadne zápasy.
+      not_before: Začiatok najskôr
+      score: Skóre
+    new:
+      new_match: Nový zápas
+  shared:
+    navbar:
+      matches: Zápasy
+      sign_in: Prihlásiť sa
+      sign_out: Odhlásiť sa
+      tournament: Turnaj
+    no_tournament_header:
+      keep_training_html: Ale ... <b>trénuj na ďalší!</b> :)
+      open_tournament: Open Tournament
+      open_tournament_text: Press button bellow to open new tournament.
+    tournament_header:
+      change: zmeniť
+      close_tournament: Skončiť Turnaj
+      close_tournament_text: Tento turnaj práve prebieha. Ak ho chceš ukončiť, použi tlačidlo nižšie.
+      welcome_html: <strong>Vitaj</strong> na tomto turnaji!
+  switch_locale_label: English
+  tournaments:
+    court_fields:
+      label: Označenie
+    form:
+      add_court: pridať kurt
+      back: Späť
+      courts: Kurty
+      label: Názov
+      score_update_links_accessible: Zobraziť linky na zmenu skóre zápasov
+      submit: Uložiť
+    play_info:
+      next: 'nasleduje:'
+      not_before: najskôr o
+    court:
+      go_to_court: Prejsť na kurt
+      no_matches: Žiadne zápasy.
+      tournament_not_found: Turnaj nebol nájdený, možno už skončil.

@@ -19,10 +19,10 @@
     <% if next_match.present? %>
       <li class="list-group-item">
         <small>
-          next:<br>
+          <%= t '.next' %><br>
           <%= court_label_for next_match %>
           <% unless next_match.not_before.blank? %>
-            <br>not before <%= next_match.not_before.strftime('%k:%M') %>
+            <br><%= t '.not_before' %> <%= next_match.not_before.strftime('%H:%M') %>
           <% end %>
         </small>
       </li>

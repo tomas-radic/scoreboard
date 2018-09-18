@@ -1,14 +1,14 @@
 <h2><%= @tournament.label %></h2>
 <% if policy(@tournament).manage? %>
   <p>
-    This tournament is in progress now. Click button bellow to close this turnament if it has finished already.
+    <%= t '.close_tournament_text' %>
   </p>
   <p>
-    <%= link_to 'Close Tournament', tournament_path(@tournament), method: :delete, data: { confirm: 'This completely destroys ALL DATA of this tournament. Sure to proceed?' }, class: 'btn btn-lg btn-danger my-1' %>
-    <%= link_to 'change', edit_tournament_path(@tournament), class: 'btn btn-xs btn-link' %>
+    <%= link_to t('.close_tournament'), tournament_path(@tournament), method: :delete, data: { confirm: 'This completely destroys ALL DATA of this tournament. Sure to proceed?' }, class: 'btn btn-lg btn-danger my-1' %>
+    <%= link_to t('.change'), edit_tournament_path(@tournament), class: 'btn btn-xs btn-link' %>
   </p>
 <% else %>
   <p>
-    <em><b>Welcome</b> to this tournament.</em>
+    <em><%= t '.welcome_html' %></em>
   </p>
 <% end %>

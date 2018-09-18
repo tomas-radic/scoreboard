@@ -2,9 +2,9 @@
 <%= render 'shared/navbar' %>
 <p>
   <% if policy(Match).create? %>
-    <%= link_to 'Add match', new_tournament_court_match_path(@tournament, @court), class: 'btn btn-sm btn-success my-1' %>
+    <%= link_to t('.add_match'), new_tournament_court_match_path(@tournament, @court), class: 'btn btn-sm btn-success my-1' %>
   <% end %>
-  <span class="float-right"><strong>Court <%= @court.label %> matches</strong></span>
+  <span class="float-right"><strong><%= t('.court_matches', label: @court.label) %></strong></span>
 </p>
 <% if @court.matches.any? %>
   <div class="table-responsive mb-1">
@@ -12,9 +12,9 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Label</th>
-          <th scope="col">Score</th>
-          <th scope="col">Not Before</th>
+          <th scope="col"><%= t '.label' %></th>
+          <th scope="col"><%= t '.score' %></th>
+          <th scope="col"><%= t '.not_before' %></th>
         </tr>
       </thead>
       <tbody>
@@ -26,5 +26,5 @@
   </div>
   <%= render 'shared/footer' %>
 <% else %>
-  <p>No matches.</p>
+  <p><%= t '.no_matches' %></p>
 <% end %>

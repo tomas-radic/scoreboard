@@ -2,18 +2,20 @@
   <div class="row">
     <div class="col-md-7">
       <div class="form-group">
-        <%= f.label :label %>
+        <%= f.label :label, t('.label') %>
         <%= f.text_field :label, class: 'form-control', autofocus: true %>
       </div>
     </div>
     <div class="col-md-5 d-flex align-items-center">
       <div class="form-group form-check">
         <%= f.check_box :public_score_update, class: 'form-check-input' %>
-        <label class="form-check-label" for="tournament_public_score_update">Public score update</label>
+        <label class="form-check-label" for="tournament_public_score_update"><%= t '.score_update_links_accessible' %></label>
       </div>
     </div>
   </div>
   <hr/>
+
+  <h2 class="mb-4"><%= t '.courts' %></h2>
   <div id="courts">
     <div class="row">
       <div class="col-md-3">
@@ -22,15 +24,15 @@
         <% end %>
         <div class="links">
           <hr>
-          <%= link_to_add_association 'add court', f, :courts, class: 'btn btn-sm btn-outline-success' %>
+          <%= link_to_add_association t('.add_court'), f, :courts, class: 'btn btn-sm btn-outline-success' %>
         </div>
       </div>
     </div>
   </div>
 
   <p class="text-right">
-    <%= link_to 'Back', root_path, class: 'btn btn-lg btn-outline-success my-1' %>
-    <%= f.submit 'Submit', class: 'btn btn-lg btn-success my-1' %>
+    <%= link_to t('.back'), root_path, class: 'btn btn-lg btn-outline-success my-1' %>
+    <%= f.submit t('.submit'), class: 'btn btn-lg btn-success my-1' %>
   </p>
 <% end %>
 

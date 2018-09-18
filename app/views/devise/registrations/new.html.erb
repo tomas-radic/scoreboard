@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-3 hidden-sm-down"></div>
   <div class="col">
-    <h2>Sign up</h2>
+    <span class="text-right"><%= switch_locale_link request.url %></span>
+    <h2><%= t '.sign_up' %></h2>
     <hr>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -10,7 +11,7 @@
       <div class="row">
         <div class="col">
           <div class="field form-group">
-            <%= f.label :email %><br />
+            <%= f.label :email, t('.email') %><br />
             <%= f.email_field :email, autofocus: true, class: 'form-control' %>
           </div>
         </div>
@@ -18,9 +19,9 @@
       <div class="row">
         <div class="col">
           <div class="field form-group">
-            <%= f.label :password %>
+            <%= f.label :password, t('.password') %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em><%= t '.minimum_password_length', minimum_password_length: @minimum_password_length %></em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
           </div>
@@ -30,7 +31,7 @@
       <div class="row">
         <div class="col">
           <div class="field form-group">
-            <%= f.label :password_confirmation %><br />
+            <%= f.label :password_confirmation, t('.password_confirmation') %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
           </div>
         </div>
@@ -39,8 +40,8 @@
       <div class="row">
         <div class="col">
           <div class="actions">
-            <%= f.submit "Sign up", class: 'btn btn-lg btn-success my-1' %>
-            <%= link_to "Have account?", new_session_path(resource_name), class: 'btn btn-lg btn-outline-success my-1' %><br />
+            <%= f.submit t('.sign_up'), class: 'btn btn-lg btn-success my-1' %>
+            <%= link_to t('.have_account'), new_session_path(resource_name), class: 'btn btn-lg btn-outline-success my-1' %><br />
           </div>
         </div>
       </div>

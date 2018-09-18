@@ -48,13 +48,13 @@ module MatchesHelper
   end
 
   def match_started_label(match)
-    result = "Match started"
+    result = t '.match_started'
     result += " (#{match.started_at.localtime.strftime('%H:%M')})" if match.started_at.present?
     result
   end
 
   def match_finished_label(match)
-    result = "Match finished"
+    result = t '.match_finished'
     result += " (#{match.finished_at.localtime.strftime('%H:%M')})" if match.finished_at.present?
     result
   end

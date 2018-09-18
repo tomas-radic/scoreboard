@@ -8,11 +8,11 @@
       <% else %>
         <p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><small>No matches here.</small></li>
+            <li class="list-group-item"><small><%= t '.no_matches' %></small></li>
           </ul>
         </p>
       <% end %>
-      <div><%= link_to 'Go to court', tournament_court_path(@tournament, court), class: 'btn btn-sm btn-success' %></div>
+      <div><%= link_to t('.go_to_court'), tournament_court_path(@tournament, court), class: 'btn btn-sm btn-success' %></div>
     </div>
   </div>
 </div>

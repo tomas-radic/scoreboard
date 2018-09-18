@@ -1,33 +1,89 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  courts:
+    show:
+      add_match: Add match
+      court_matches: Court %{label} matches
+      label: Match
+      not_before: Not before
+      no_matches: No matches.
+      score: Score
+  devise:
+    registrations:
+      new:
+        email: Email
+        have_account: Have account?
+        minimum_password_length: (%{minimum_password_length} characters minimum)
+        password: Password
+        password_confirmation: Password confirmation
+        sign_up: Sign up
+    sessions:
+      new:
+        email: Email
+        forgotten_password_label: Forgotten password?
+        forgotten_password_text: Sorry, there is no automated email-based process to renew your password yourself. Please, contact me on tomas.radic@gmail.com, or +421 905 289 248 for help.
+        log_in: Log in
+        need_account: Need account?
+        password: Password
+        remember_me: Remember me
+  matches:
+    edit:
+      edit_match: Edit match
+    form:
+      back: Back
+      court: Court
+      delete: Delete
+      delete_confirmation: Sure to delete this match?
+      match_finished: Match finished
+      match_started: Match started
+      max_sets_to_play: Max sets to play
+      not_before: Not before
+      participant1: Participant 1
+      participant2: Participant 2
+      submit: Submit
+    edit_score:
+      match_finished: Match finished
+      quit: Quit
+      submit: Submit
+    index:
+      add_match: Add match
+      all_planned_matches: All planned matches
+      court: Court
+      label: Match
+      no_matches: No matches.
+      not_before: Not before
+      score: Score
+    new:
+      new_match: New match
+  shared:
+    navbar:
+      matches: Matches
+      sign_in: Sign in
+      sign_out: Sign out
+      tournament: Tournament
+    no_tournament_header:
+      keep_training_html: But ... <b>keep training!</b> :)
+      open_tournament: Open Tournament
+      open_tournament_text: Press button bellow to open new tournament.
+    tournament_header:
+      change: change
+      close_tournament: Close Tournament
+      close_tournament_text: This tournament is in progress now. Click button bellow to close this turnament if it has finished already.
+      welcome_html: <strong>Welcome</strong> to this tournament!
+  switch_locale_label: Slovensky
+  tournaments:
+    court_fields:
+      label: Label
+    form:
+      add_court: add court
+      back: Back
+      courts: Courts
+      label: Label
+      score_update_links_accessible: Display links for match score updates
+      submit: Submit
+    play_info:
+      next: 'next:'
+      not_before: not before
+    court:
+      go_to_court: Go to court
+      no_matches: No matches here.
+      tournament_finished: Tournament not found, may have finished.

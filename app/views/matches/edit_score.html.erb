@@ -8,7 +8,7 @@
         <div class="form-group">
           <div class="field">
             <%= number_field_tag :score, game_set.score.first, min: 0, step: 1,
-                name: "score[#{game_set.position-1}][]", class: 'float-right text-right' %>
+                name: "score[#{game_set.position-1}][]", class: 'form-control float-right text-right' %>
           </div>
         </div>
       </div>
@@ -16,25 +16,27 @@
         <div class="form-group">
           <div class="field">
             <%= number_field_tag :score, (game_set.score.last), min: 0, step: 1,
-                name: "score[#{game_set.position-1}][]", class: 'float-left text-left' %>
+                name: "score[#{game_set.position-1}][]", class: 'form-control float-left text-left' %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="form-group form-check">
-      <%= check_box_tag :finished, '1', @match.finished_at.present?, class: 'form-check-input' %>
-      <label class="form-check-label" for="finished"><%= match_finished_label @match %></label>
+  <div class="row my-2">
+    <div class="col">
+      <div class="form-check">
+        <%= check_box_tag :finished, '1', @match.finished_at.present?, class: 'form-check-input' %>
+        <label class="form-check-label" for="finished"><%= match_finished_label @match %></label>
+      </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
       <div class="text-center">
-        <p><%= submit_tag :submit, class: 'btn btn-lg btn-success' %></p>
-        <p><%= link_to 'Quit', @back_path %></p>
+        <p><%= submit_tag t('.submit'), class: 'btn btn-lg btn-success' %></p>
+        <p><%= link_to t('.quit'), @back_path %></p>
       </div>
     </div>
   </div>

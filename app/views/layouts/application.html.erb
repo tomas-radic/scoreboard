@@ -15,8 +15,12 @@
 
   <body class="background-clay-light">
     <div class="container theme-showcase" role="main">
-      <%= yield %>
-      <%= render 'shared/footer' %>
+      <wrapper class="d-flex flex-column">
+        <main class="flex-fill">
+          <%= yield %>
+        </main>
+        <%= render 'shared/footer' %>
+      </wrapper>
     </div>
   </body>
 </html>

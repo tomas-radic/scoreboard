@@ -9,7 +9,12 @@
     <div class="col-md-5 d-flex align-items-center">
       <div class="form-group form-check">
         <%= f.check_box :public_score_update, class: 'form-check-input' %>
-        <label class="form-check-label" for="tournament_public_score_update"><%= t '.score_update_links_accessible' %></label>
+        <label class="form-check-label" for="tournament_public_score_update">
+          <%= t '.score_update_links_accessible' %>
+        </label>
+        <a href="#" data-toggle="tooltip" data-placement="bottom", title="<%= t('.public_score_update_info') %>">
+          <%= fa_icon 'question-circle' %>
+        </a>
       </div>
     </div>
   </div>

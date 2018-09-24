@@ -79,6 +79,7 @@ en:
       back: Back
       courts: Courts
       label: Label
+      public_score_update_info: There will be visible and accessible links or buttons for changing match score in the match tables for everyone
       score_update_links_accessible: Display links for match score updates
       submit: Submit
     play_info:
@@ -88,4 +89,3 @@ en:
       go_to_court: Go to court
       no_matches: No matches here.
       tournament_finished: Tournament not found, may have finished.
-      

@@ -14,7 +14,7 @@
 //= require turbolinks
 //= require jquery3
 //= require popper
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require cocoon
-//= require jquery-ui
 //= require_tree .

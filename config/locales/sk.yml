@@ -79,6 +79,7 @@ sk:
       back: Späť
       courts: Kurty
       label: Názov
+      public_score_update_info: V tabuľkách zápasov budú pre každého viditeľné, voľne dostupné linky alebo tlačidlá umožňujúce zmenu skóre zápasu
       score_update_links_accessible: Zobraziť linky na zmenu skóre zápasov
       submit: Uložiť
     play_info:

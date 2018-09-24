@@ -17,7 +17,7 @@ module CourtsHelper
 
       if score_update_allowed
         result += content_tag :td do
-          link_to Score.result_for(match), edit_score_tournament_match_path(match.tournament, match)
+          link_to Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success'
         end
       else
         result += content_tag :td do

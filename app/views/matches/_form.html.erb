@@ -4,13 +4,13 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :participant1, t('.participant1') %>
-        <%= f.text_field :participant1, class: 'form-control' %>
+        <%= f.text_field :participant1, class: add_error_class_to('form-control', @match, :participant1) %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :participant2, t('.participant2') %>
-        <%= f.text_field :participant2, class: 'form-control' %>
+        <%= f.text_field :participant2, class: add_error_class_to('form-control', @match, :participant2) %>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col">
       <div class="form-group form-check">
-        <%= check_box_tag :started, '1', @match.started_at.present?, class: 'form-check-input' %>
+        <%= check_box_tag :started, '1', @match.started_at.present?, class: add_error_class_to('form-check-input', @match, :started_at) %>
         <label class="form-check-label" for="started"><%= match_started_label @match %></label>
       </div>
     </div>

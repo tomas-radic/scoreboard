@@ -30,7 +30,8 @@ describe UpdateMatch do
     end
 
     it 'Updates the match' do
-      expect(subject).to be true
+      match = subject
+      expect(match).to be_a Match
       expect(match.tournament.matches.count).to eq 1
       expect(match).to have_attributes(
         participant1: 'Laure Howell',
@@ -56,7 +57,8 @@ describe UpdateMatch do
       end
 
       it 'Does not reduce number of game_sets of the match' do
-        expect(subject).to be true
+        match = subject
+        expect(match).to be_a Match
         expect(match.reload.game_sets.count).to eq 3
       end
     end
@@ -137,7 +139,8 @@ describe UpdateMatch do
     end
 
     it 'Does not update the match' do
-      expect(subject).to be false
+      match = subject
+      expect(match).to be_a Match
       expect(match.reload.participant1.blank?).to be false
     end
   end

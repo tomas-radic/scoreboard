@@ -1,0 +1,17 @@
+<div class="table-responsive mb-1">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"><%= t '.label' %></th>
+        <th scope="col"><%= t '.score' %></th>
+        <th scope="col"><%= t '.not_before' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @court.matches.sorted.each do |match| %>
+        <%= court_matches_row_for match, @matches_updatable, @scores_updatable %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

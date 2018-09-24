@@ -12,4 +12,9 @@ module ApplicationHelper
     url_splitted.find { |e| e == I18n.locale.to_s }.gsub!(current_locale, switch_to_locale)
     link_to t('switch_locale_label'), url_splitted.join('/'), class: 'nav-link'
   end
+
+  def add_error_class_to(class_attribute, obj, attribute_to_check)
+    class_attribute += ' field-error' if obj.errors[attribute_to_check].present?
+    class_attribute
+  end
 end

@@ -26,8 +26,8 @@ describe CreateMatch do
       )
     end
 
-    it 'Creates the match with correct attributes and returns true' do
-      expect(subject).to be true
+    it 'Creates the match with correct attributes and returns created match' do
+      expect(subject).to be_a Match
       expect(tournament.matches.count).to eq 1
       match = tournament.matches.first
       expect(match).to have_attributes(
@@ -97,8 +97,10 @@ describe CreateMatch do
       )
     end
 
-    it 'Does not save the match and returns false' do
-      expect(subject).to be false
+    it 'Does not save the match and returns unsaved match' do
+      match = subject
+      expect(match).to be_a Match
+      expect(match.persisted?).to be false
       expect(tournament.matches.count).to eq 0
     end
   end

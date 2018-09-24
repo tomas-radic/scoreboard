@@ -1,6 +1,6 @@
 module CourtsHelper
   def court_matches_row_for(match, match_update_allowed, score_update_allowed)
-    content_tag :tr, class: decoration_class_for(match) do
+    content_tag :tr, class: decoration_class_for(match), data: { position: match.position } do
       result = content_tag :td do
         check_box_tag :finished, :finished, match.finished?, disabled: true
       end

@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
   before_action :set_tournament_progress
 
   def index
-    @matches = TournamentMatchesQuery.call(tournament: @tournament)
+    @matches = @tournament.matches.sorted
     @matches_updatable = policy(@tournament).update_matches?
     @scores_updatable = policy(@tournament).update_scores?
     store_location
@@ -29,7 +29,10 @@ class MatchesController < ApplicationController
   def create
     authorize(Match)
 
-    if CreateMatch.call(current_user.tournament, params)
+    @match = CreateMatch.call(current_user.tournament, params).result
+    @back_path = stored_location(fallback: tournament_path(@tournament))
+
+    if @match.errors.blank?
       redirect_to(stored_location(fallback: tournament_matches_path(@tournament))) and forget_location
     else
       render :new
@@ -43,8 +46,11 @@ class MatchesController < ApplicationController
 
   def update
     authorize @match
+    @back_path = stored_location(fallback: tournament_path(@tournament))
 
-    if UpdateMatch.call(@match, params)
+    UpdateMatch.call(@match, params)
+
+    if @match.errors.blank?
       redirect_to(stored_location(fallback: tournament_matches_path(@tournament))) and forget_location
     else
       render :edit

@@ -5,12 +5,15 @@ class Match < ApplicationRecord
   delegate :tournament, to: :court
 
   validates :participant1, :participant2, presence: true
+  validate :court_occupied
 
   acts_as_list scope: :court
 
   scope :upcoming, -> { where(started_at: nil, finished_at: nil) }
   scope :in_progress, -> { where(finished_at: nil).where.not(started_at: nil) }
   scope :finished, -> { where.not(finished_at: nil) }
+  scope :started, -> { where('started_at is not null or finished_at is not null') }
+  scope :sorted, -> { includes(:court, :game_sets).order(:finished_at, :started_at, :position) }
 
   def label
     "#{participant1} vs #{participant2}"
@@ -30,5 +33,18 @@ class Match < ApplicationRecord
 
   def scheduled?
     self.not_before.present?
+  end
+
+
+  private
+
+  def court_occupied
+    return unless self.in_progress?
+
+    other_matches_on_court = self.court.matches.in_progress.where.not(id: self.id)
+
+    if other_matches_on_court.any?
+      errors.add :started_at, 'Court is occupied by other match'
+    end
   end
 end

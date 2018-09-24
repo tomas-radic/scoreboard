@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
     resources :tournaments do
       resources :courts do
-        resources :matches, only: [:new]
+        post :reorder_matches, on: :member
+        resources :matches, only: [:new] do
+          post :reorder, on: :collection
+        end
       end
       resources :matches do
         get :edit_score, on: :member

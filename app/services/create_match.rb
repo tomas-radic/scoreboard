@@ -12,5 +12,6 @@ class CreateMatch < Patterns::Service
     assign_game_sets
     set_match_state
     match.save
+    match
   end
 end

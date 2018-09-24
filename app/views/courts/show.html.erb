@@ -15,4 +15,7 @@
   <p><%= t '.no_matches' %></p>
 <% end %>
 
-<%= render 'scripts' if @matches_updatable %>
+<% if @matches_updatable %>
+  <%= render 'scripts' %>
+  <%= javascript_include_tag 'touch_punch' %>
+<% end %>

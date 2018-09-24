@@ -61,6 +61,7 @@ en:
   shared:
     navbar:
       about: About
+      home: Home
       matches: Matches
       sign_in: Sign in
       sign_out: Sign out

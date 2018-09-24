@@ -14,6 +14,11 @@
         </li>
       <% end %>
       <% if user_signed_in? %>
+        <% if controller_name == 'static_pages' && @tournament.blank? %>
+          <li class="nav-item">
+            <%= link_to t('.home'), root_path, class: 'nav-link' %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>

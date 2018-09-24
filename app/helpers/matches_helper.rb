@@ -16,7 +16,7 @@ module MatchesHelper
       end
 
       result += content_tag :td do
-        link_to match.court.label, tournament_court_path(match.tournament, match.court)
+        link_to match.court.label, tournament_court_path(match.tournament, match.court), class: 'btn btn-sm btn-success'
       end
 
       if score_update_allowed

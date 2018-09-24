@@ -61,7 +61,7 @@ module MatchesHelper
 
   def latest_score_update(match)
     latest_update_at = match.game_sets.where.not(score: []).pluck(:updated_at).max
-    return 'unknown score' if latest_update_at.blank?
+    return '' if latest_update_at.blank?
 
     minutes_ago = ((Time.zone.now - latest_update_at) / 60).ceil
 

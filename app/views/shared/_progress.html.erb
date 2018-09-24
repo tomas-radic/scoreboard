@@ -1,0 +1,7 @@
+<% unless @tournament_progress.blank? %>
+  <div class="progress">
+    <div class="progress-bar background-dust" role="progressbar" style="width: <%= @tournament_progress[:finished] %>%" aria-valuenow="<%= @tournament_progress[:finished] %>" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar background-highlight" role="progressbar" style="width: <%= @tournament_progress[:in_progress] %>%" aria-valuenow="<%= @tournament_progress[:in_progress] %>" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar background-clay-dark" role="progressbar" style="width: <%= @tournament_progress[:upcoming] %>%" aria-valuenow="<%= @tournament_progress[:upcoming] %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+<% end %>

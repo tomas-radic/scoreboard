@@ -81,7 +81,7 @@ sk:
       how_it_works_caption: Ako to funguje
       how_it_works_text1: Pre jednoduchosť používania tohto webu sa hráči neregistrujú a neprihlasujú, jednoducho kliknú na linku, ktorá ich zavedie na stránku prebiehajúceho turnaja, kde hneď vidia rozpis aj aktuálny stav zápasov. Túto linku organizátor uverejní na svojej vlastnej organizačnej stránke turnaja, ak nejakú má, alebo ju môže napr. rozposlať účastníkom do emailu. Získať ju vie tak, že turnaj vytvorí, v menu prejde na položku Turnaj a skopíruje aktuálnu web adresu z webového browsera.
       how_it_works_text2: Meniť atribúty turnaja a jednotlivých zápasov môže iba organizátor, ktorý musí byť na tomto webe registrovaný a prihlásený svojim emailom a heslom. Organizátor sa pri každom turnaji môže rozhodnúť, či povolí všeobecný prístup k tlačidlám na zmenu skóre zápasov pre všetkých hráčov, alebo bude zmena skóre zápasu prístupná len hráčom, ktorí obrdžali linku určenú presne pre ich zápas. Takúto linku organizátor získa podobne, ako prihlásený organizátor klikne na tlačidlo zmeny skóre zápasu a skopíruje aktuálnu web adresu z webového browsera.
-      pricing_caption: Cena za prevádzku/používanie
+      pricing_caption: Cena za prevádzku / používanie
       pricing_text: Web môže pri prvom kontakte po dlhšom čase nabiehať pomalšie (5-7 sekúnd). Je to z dôvodu, že prevádzka na serveri zatiaľ nie je zaplatená a web tam beží zadarmo. Používanie tohto webu organizátormi turnajov je zatiaľ taktiež zadarmo, prípadná malá zľava zo štartovného pre tvorcu tohto webu môže potešiť :)
   switch_locale_label: English
   tournaments:

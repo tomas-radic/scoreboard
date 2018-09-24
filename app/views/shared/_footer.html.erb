@@ -1,11 +1,22 @@
-<% unless @tournament_progress.blank? %>
-  <footer class="footer">
-    <div class="container">
-      <div class="progress">
-        <div class="progress-bar background-dust" role="progressbar" style="width: <%= @tournament_progress[:finished] %>%" aria-valuenow="<%= @tournament_progress[:finished] %>" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar background-highlight" role="progressbar" style="width: <%= @tournament_progress[:in_progress] %>%" aria-valuenow="<%= @tournament_progress[:in_progress] %>" aria-valuemin="0" aria-valuemax="100"></div>
-        <div class="progress-bar background-clay-dark" role="progressbar" style="width: <%= @tournament_progress[:upcoming] %>%" aria-valuenow="<%= @tournament_progress[:upcoming] %>" aria-valuemin="0" aria-valuemax="100"></div>
+<footer class="footer mt-2">
+  <div class="row">
+    <div class="col">
+      <div class="background-clay-dark mt-1 py-4">
+        <p class="text-center">
+    			Tomáš Radič<br>
+          <small>
+            <%= link_to 'tomas.radic@gmail.com', 'mailto:tomas.radic@gmail.com' %><br>
+            +421 905 289 248
+          </small>
+    		</p>
+    		<p class="text-center">
+          <small>
+    				<%= link_to 'LinkedIn', 'https://www.linkedin.com/in/tomas-radic-a85161a7/', target: :_blank %>
+    				●
+    				<%= link_to 'Github', 'https://github.com/tomas-radic/scoreboard', target: :_blank %>
+          </small>
+        </p>
       </div>
     </div>
-  </footer>
-<% end %>
+  </div>
+</footer>

@@ -5,10 +5,6 @@
   width: 100%;
 }
 
-.card {
-  min-height: 512px;
-}
-
 .card li {
   background-color: inherit;
 }
@@ -53,13 +49,13 @@ table {
   color: #9a8383;
 }
 
-// .form-control:focus {
-//   border-color: inherit;
-//   -webkit-box-shadow: none;
-//   box-shadow: none;
-//   outline: none;
-// }
-
 .field-error {
   outline: 3px solid red !important;
+}
+
+// Properties for md and wider screens only
+@media only screen and (min-width: 768px) {
+  .card {
+    min-height: 512px;
+  }
 }

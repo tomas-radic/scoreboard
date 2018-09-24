@@ -25,6 +25,9 @@ sk:
         need_account: Nemáš účet?
         password: Heslo
         remember_me: Zapamätať prihlásenie
+    shared:
+      navbar:
+        about: O projekte
   latest_score_update_html: pred <span class="score-time-info">%{minutes}</span>m
   matches:
     edit:
@@ -57,6 +60,7 @@ sk:
       new_match: Nový zápas
   shared:
     navbar:
+      about: O projekte
       matches: Zápasy
       sign_in: Prihlásiť sa
       sign_out: Odhlásiť sa
@@ -70,6 +74,15 @@ sk:
       close_tournament: Skončiť Turnaj
       close_tournament_text: Tento turnaj práve prebieha. Ak ho chceš ukončiť, použi tlačidlo nižšie.
       welcome_html: <strong>Vitaj</strong> na tomto turnaji!
+  static_pages:
+    about:
+      general_caption: Všeobecne
+      general_text: Tento web slúži ako elektronický, všeobecne dostupný rozpis zápasov tenisového turnaja a tiež indikátor jeho priebehu pre všetkých zúčastnených hráčov. Umožňuje aktuálny náhľad na prebiehajúce aj plánované zápasy a taktiež umožňuje hráčom veľmi jednoduchým spôsobom aktualizovať skóre svojich zápasov z akéhokoľvek, na internet pripojeného, mobilného telefónu napr. počas oddychu hráčov pri výmene strán na kurte. Aktualizovať skóre zápasov môže aj organizátor a to pre ľubovolný zápas turnaja. Tieto informácie aj s časovým údajom kedy naposledy aktualizácia skóre zápasu prebehla je potom všetkým ľahko dostupná a vedia sa podľa toho zariadiť. Tento web je optimalizovaný pre pohodlné zobrazenie na mobilných telefónoch, aj počítačoch.
+      how_it_works_caption: Ako to funguje
+      how_it_works_text1: Pre jednoduchosť používania tohto webu sa hráči neregistrujú a neprihlasujú, jednoducho kliknú na linku, ktorá ich zavedie na stránku prebiehajúceho turnaja, kde hneď vidia rozpis aj aktuálny stav zápasov. Túto linku organizátor uverejní na svojej vlastnej organizačnej stránke turnaja, ak nejakú má, alebo ju môže napr. rozposlať účastníkom do emailu. Získať ju vie tak, že turnaj vytvorí, v menu prejde na položku Turnaj a skopíruje aktuálnu web adresu z webového browsera.
+      how_it_works_text2: Meniť atribúty turnaja a jednotlivých zápasov môže iba organizátor, ktorý musí byť na tomto webe registrovaný a prihlásený svojim emailom a heslom. Organizátor sa pri každom turnaji môže rozhodnúť, či povolí všeobecný prístup k tlačidlám na zmenu skóre zápasov pre všetkých hráčov, alebo bude zmena skóre zápasu prístupná len hráčom, ktorí obrdžali linku určenú presne pre ich zápas. Takúto linku organizátor získa podobne, ako prihlásený organizátor klikne na tlačidlo zmeny skóre zápasu a skopíruje aktuálnu web adresu z webového browsera.
+      pricing_caption: Cena za prevádzku/používanie
+      pricing_text: Web môže pri prvom kontakte po dlhšom čase nabiehať pomalšie (5-7 sekúnd). Je to z dôvodu, že prevádzka na serveri zatiaľ nie je zaplatená a web tam beží zadarmo. Používanie tohto webu organizátormi turnajov je zatiaľ taktiež zadarmo, prípadná malá zľava zo štartovného pre tvorcu tohto webu môže potešiť :)
   switch_locale_label: English
   tournaments:
     court_fields:

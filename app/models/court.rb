@@ -10,6 +10,6 @@ class Court < ApplicationRecord
   end
 
   def next_match
-    self.matches.where(finished_at: nil, started_at: nil).first
+    self.matches.where(finished_at: nil, started_at: nil).order(:position).first
   end
 end

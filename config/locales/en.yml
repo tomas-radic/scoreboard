@@ -25,6 +25,9 @@ en:
         need_account: Need account?
         password: Password
         remember_me: Remember me
+    shared:
+      navbar:
+        about: About
   latest_score_update_html: <span class="score-time-info">%{minutes}</span>m ago
   matches:
     edit:
@@ -57,6 +60,7 @@ en:
       new_match: New match
   shared:
     navbar:
+      about: About
       matches: Matches
       sign_in: Sign in
       sign_out: Sign out
@@ -70,6 +74,15 @@ en:
       close_tournament: Close Tournament
       close_tournament_text: This tournament is in progress now. Click button bellow to close this turnament if it has finished already.
       welcome_html: <strong>Welcome</strong> to this tournament!
+  static_pages:
+    about:
+      general_caption: General
+      general_text: This website serves as an electronic, generally accessible tournament schedule, as well as an indicator of its progress for all participating players. It displays current preview of ongoing and planned matches and also allows players to easily update their match scores from any internet connected mobile phone, for example while players are relaxing as they are swapping sides on the court. The organizer can also update the match scores for any tournament match. This information, as well as the time when the last update of the match scores was performed is generally available to all players so they can arrange their time accordingly. This site is optimized for convenient viewing on mobile phones and computers.
+      how_it_works_caption: How it works
+      how_it_works_text1: For the ease of using this website, players do not need to register, they simply click on the link that takes them to the on-going tournament page, where they see the schedule and match status. The organizer can publish this link on his / her own web page of the tournament, if he / she has one, or he / she can, for example, send the link to the participanting players emails. The organizer obtains the link by creating a tournament, going to the Tournament menu and copying the current web address from the web browser.
+      how_it_works_text2: Only the organizer who must be registered and logged in with his / her email and password can change the tournament and individual match attributes. The organizer can decide on every tournament whether to allow general access to the score change buttons for all players, or the match score can be accessed only by players who have received the link specified for their match. This score-change link can be obtained in similar way by clicking on the change match score button and copying the current web address from the web browser.
+      pricing_caption: Pricing information
+      pricing_text: The website may be loaded slower (5-7 seconds) on the first contact after a some time period of inactivity. This is because the hosting on the server is not yet paid and the site runs for free. The use of this site by the organizers is also free of charge, anyway any small discount from the tournament entry fee for the creator of this site is appreciated :)
   switch_locale_label: Slovensky
   tournaments:
     court_fields:

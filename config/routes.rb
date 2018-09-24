@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
     root to: 'tournaments#index'
 
+    get 'static_pages/about'
+
     resources :tournaments do
       resources :courts do
         post :reorder_matches, on: :member

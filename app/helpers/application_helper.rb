@@ -8,7 +8,18 @@ module ApplicationHelper
       'en'
     end
 
-    link_to t('switch_locale_label'), root_url(locale: switch_to_locale), class: 'nav-link'
+    url_splitted = current_url.split('/')
+    url_locale = url_splitted.find { |e| e == I18n.locale.to_s }
+    link_url = nil
+
+    if url_locale.present?
+      url_locale.gsub!(current_locale, switch_to_locale)
+      link_url = url_splitted.join('/')
+    else
+      link_url = root_path(locale: switch_to_locale)
+    end
+
+    link_to t('switch_locale_label'), link_url, class: 'nav-link'
   end
 
   def add_error_class_to(class_attribute, obj, attribute_to_check)

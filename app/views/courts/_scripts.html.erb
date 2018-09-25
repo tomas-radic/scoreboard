@@ -19,7 +19,8 @@
           type: 'POST',
           url: '<%= reorder_matches_tournament_court_path @tournament, @court %>'
         });
-      }
+      },
+      handle: '.drag-handle'
     });
   }
 

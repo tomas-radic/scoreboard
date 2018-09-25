@@ -6,6 +6,9 @@ module CourtsHelper
       end
 
       if match_update_allowed
+        result += content_tag :td, class: 'drag-handle' do
+          fa_icon 'bars'
+        end
         result += content_tag :td do
           link_to match.label, edit_tournament_match_path(match.tournament, match)
         end

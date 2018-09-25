@@ -3,6 +3,9 @@
     <thead>
       <tr>
         <th scope="col"></th>
+        <% if @matches_updatable %>
+          <th scope="col"></th>
+        <% end %>
         <th scope="col"><%= t '.label' %></th>
         <th scope="col"><%= t '.score' %></th>
         <th scope="col"><%= t '.not_before' %></th>

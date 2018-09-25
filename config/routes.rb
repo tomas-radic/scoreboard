@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|sk/ do
-    devise_for :users
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
     root to: 'tournaments#index'
+
+    devise_for :users
 
     get 'static_pages/about'
 

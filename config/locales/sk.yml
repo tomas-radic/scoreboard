@@ -68,6 +68,7 @@ sk:
       tournament: Turnaj
     no_tournament_header:
       keep_training_html: Ale ... <b>trénuj na ďalší!</b> :)
+      no_tournament_caption: Žiadny otvorený turnaj.
       open_tournament: Otvoriť Turnaj
       open_tournament_text: Použi tlačidlo nižšie ak chceš otvoriť nový turnaj.
     tournament_header:

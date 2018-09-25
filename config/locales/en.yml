@@ -68,6 +68,7 @@ en:
       tournament: Tournament
     no_tournament_header:
       keep_training_html: But ... <b>keep training!</b> :)
+      no_tournament_caption: No tournament here.
       open_tournament: Open Tournament
       open_tournament_text: Press button bellow to open new tournament.
     tournament_header:

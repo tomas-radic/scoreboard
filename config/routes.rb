@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  get '/:locale' => 'tournaments#index'
-
   scope "(:locale)", locale: /en|sk/ do
     root to: 'tournaments#index'
+    get '/:locale' => 'tournaments#index'
 
     devise_for :users, controllers: {
       sessions: 'users/sessions',

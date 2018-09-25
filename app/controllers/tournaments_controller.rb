@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :refresh_score]
+  before_action :authenticate_user!, except: [:index, :show, :refresh_score]
   before_action :load_tournament, only: [:show, :edit, :update, :destroy, :refresh_score]
   before_action :set_tournament_progress, only: :show
 

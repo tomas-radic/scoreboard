@@ -3,14 +3,15 @@
     <% if current_match.present? %>
       <li class="list-group-item">
         <p class="card-text">
-          <strong><%= court_label_for current_match %><br></strong>
-          <%= Score.result_for current_match %>
+          <strong><%= court_label_for current_match %></strong>
+
         </p>
         <p class="card-text">
+          <span class="score"><%= Score.result_for current_match %></span><br>
           <small class="text-muted">
             <%= latest_score_update current_match %>
           </small>
-          <%= link_to refresh_score_tournament_path(@tournament), remote: true do %>
+          <%= link_to refresh_score_tournament_path(@tournament), remote: true, class: 'refresh-scores' do %>
             <%= fa_icon "retweet" %>
           <% end %>
         </p>

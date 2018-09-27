@@ -13,5 +13,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Rails.application.config.assets.precompile += %w( cocoon.js )
-Rails.application.config.assets.precompile += %w( touch_punch.js )
+Rails.application.config.assets.precompile += %w(
+  cocoon.js
+  touch_punch.js
+  idle_page_reload.js
+  tournament_show.js
+)

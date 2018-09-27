@@ -1,11 +1,14 @@
 <script>
 
+  // Functions
+
   // Draws X icon on .remove_fields elements
   function removeLinkIcons() {
     var removeLinks = $('.remove_fields');
     $(removeLinks).html('');
     $(removeLinks).append('<%= fa_icon "times" %>');
   }
+
 
   // When document is ready...
   $(document).on('turbolinks:load', function() {

@@ -29,6 +29,7 @@ en:
       navbar:
         about: About
   latest_score_update_html: <span class="score-time-info">%{minutes}</span>m ago
+  latest_score_update_bracket_html: (<span class="score-time-info">%{minutes}</span>m ago)
   matches:
     edit:
       edit_match: Edit match

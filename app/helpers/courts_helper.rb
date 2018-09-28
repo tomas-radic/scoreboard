@@ -20,11 +20,11 @@ module CourtsHelper
 
       if score_update_allowed
         result += content_tag :td do
-          link_to Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success'
+          link_to(Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success') + " <small><i>#{latest_score_update match, true}</i></small>".html_safe
         end
       else
         result += content_tag :td do
-          Score.result_for match
+          "#{Score.result_for(match)} <small><i>#{latest_score_update match, true}</i></small>".html_safe
         end
       end
 

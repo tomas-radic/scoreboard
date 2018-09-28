@@ -21,11 +21,11 @@ module MatchesHelper
 
       if score_update_allowed
         result += content_tag :td do
-          link_to Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success'
+          link_to(Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success') + " <small><i>#{latest_score_update match, true}</i></small>".html_safe
         end
       else
         result += content_tag :td do
-          Score.result_for(match)
+          "#{Score.result_for(match)} <small><i>#{latest_score_update match, true}</i></small>".html_safe
         end
       end
 
@@ -59,17 +59,18 @@ module MatchesHelper
     result
   end
 
-  def latest_score_update(match)
+  def latest_score_update(match, bracket = false)
     latest_update_at = match.game_sets.where.not(score: []).pluck(:updated_at).max
     return '' if latest_update_at.blank?
 
     minutes_ago = ((Time.zone.now - latest_update_at) / 60).ceil
 
     if minutes_ago >= 60
-      '>60m'
+      bracket ? '(>60m)' : '>60m'
+    elsif bracket
+      t('latest_score_update_bracket_html', minutes: minutes_ago)
     else
       t('latest_score_update_html', minutes: minutes_ago)
-      # content_tag(:span, minutes_ago, class: 'score-time-info') + 'm ago'
     end
   end
 end

@@ -29,6 +29,7 @@ sk:
       navbar:
         about: O projekte
   latest_score_update_html: pred <span class="score-time-info">%{minutes}</span>m
+  latest_score_update_bracket_html: (<span class="score-time-info">%{minutes}</span>m)
   matches:
     edit:
       edit_match: Upraviť zápas

@@ -6,7 +6,7 @@ function hookIdleTracking() {
   var idleState = false;
   var idleTimer = null;
 
-  $('*').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
+  $('*').bind('focus mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
     clearTimeout(idleTimer);
     if (idleState == true) {
       location.reload();

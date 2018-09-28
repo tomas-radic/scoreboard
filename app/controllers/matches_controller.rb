@@ -67,10 +67,20 @@ class MatchesController < ApplicationController
   end
 
   def update_score
-    if UpdateMatchState.call(@match, params[:score], params['finished'].present?).result
-      redirect_to edit_score_tournament_match_path(@tournament, @match)
-    else
-      redirect_to tournament_path @tournament
+    begin
+      reload_page = UpdateMatchState.call(
+        @match,
+        params[:score],
+        params['finished'].present?
+      ).result
+
+      if reload_page
+        redirect_to edit_score_tournament_match_path(@tournament, @match)
+      else
+        redirect_to tournament_path @tournament
+      end
+    rescue ActiveRecord::RecordInvalid
+      redirect_to tournament_court_path @tournament, @match.court
     end
   end
 

@@ -59,7 +59,7 @@ describe Score do
     let!(:set3) { FactoryBot.create(:game_set, match: match, score: [4, 3]) }
 
     it 'Returns correct result' do
-      expect(subject).to eq '6:3, 4:6, 4:3'
+      expect(subject).to eq '6:3 4:6 4:3'
     end
   end
 

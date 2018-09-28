@@ -13,7 +13,7 @@ shared_examples 'Updating match score' do
   end
 end
 
-shared_examples 'Throwing exception' do
+shared_examples 'Indicating invalid set score' do
   it 'Raises error' do
     expect{subject}.to raise_error 'Invalid set score'
   end
@@ -21,7 +21,7 @@ end
 
 describe UpdateMatchState do
   subject do
-    UpdateMatchState.call(match, score, finished)
+    UpdateMatchState.call(match, score, finished).result
   end
 
   let!(:match) { FactoryBot.create(:match, started_at: start_time) }
@@ -48,6 +48,10 @@ describe UpdateMatchState do
       subject
 
       expect(match.started_at).to be <= 1.hour.ago
+    end
+
+    it 'Returns true' do
+      expect(subject).to be true
     end
   end
 
@@ -81,7 +85,7 @@ describe UpdateMatchState do
         { '0' => ['6'] }
       end
 
-      it_behaves_like 'Throwing exception'
+      it_behaves_like 'Indicating invalid set score'
     end
 
     context 'Too many elements' do
@@ -89,7 +93,7 @@ describe UpdateMatchState do
         { '0' => ['6', '4'], '1' => ['2', '0', nil] }
       end
 
-      it_behaves_like 'Throwing exception'
+      it_behaves_like 'Indicating invalid set score'
     end
   end
 
@@ -102,6 +106,10 @@ describe UpdateMatchState do
     it 'Marks match as finished' do
       subject
       expect(match.reload.finished_at).not_to be_nil
+    end
+
+    it 'Returns false' do
+      expect(subject).to be false
     end
   end
 
@@ -130,6 +138,10 @@ describe UpdateMatchState do
       subject
       expect(match.reload.finished_at).to be_nil
     end
+
+    it 'Returns true' do
+      expect(subject).to be true
+    end
   end
 
   context 'Finishing match with invalid score' do
@@ -141,6 +153,18 @@ describe UpdateMatchState do
     it 'Does not mark match as finished' do
       expect{subject}.to raise_error 'Invalid set score'
       expect(match.reload.finished_at).to be_nil
+    end
+  end
+
+  context 'When there is another match in progress on that court' do
+    let!(:another_match) { FactoryBot.create(:match, :started) }
+    let!(:match) { FactoryBot.create(:match, court: another_match.court) }
+    let(:score) do
+      { '0' => ['6', '4'], '1' => ['2', '0'] }
+    end
+
+    it 'Raises record invalid' do
+      expect{subject}.to raise_error ActiveRecord::RecordInvalid
     end
   end
 end

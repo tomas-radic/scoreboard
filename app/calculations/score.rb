@@ -19,7 +19,7 @@ class Score < Patterns::Calculation
     end
 
     return '-' if result.empty?
-    result.compact.join(', ')
+    result.compact.join(' ')
   end
 
   def match

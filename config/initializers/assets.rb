@@ -17,5 +17,7 @@ Rails.application.config.assets.precompile += %w(
   cocoon.js
   touch_punch.js
   idle_page_reload.js
-  tournament_show.js
+  tournaments_show.js
+  tournaments_form.js
+  courts.js
 )

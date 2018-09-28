@@ -94,7 +94,7 @@ en:
       back: Back
       courts: Courts
       label: Label
-      public_score_update_info: There will be visible and accessible links or buttons for changing match score in the match tables for everyone
+      public_score_update_info: There will be visible and accessible buttons for changing match score in the match tables for everyone
       score_update_links_accessible: Display links for match score updates
       submit: Submit
     play_info:

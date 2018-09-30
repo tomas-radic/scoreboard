@@ -71,14 +71,6 @@ describe UpdateMatchState do
     it_behaves_like 'Updating match score'
   end
 
-  context 'With all-blank set score' do
-    let(:score) do
-      { '0' => ['6', '4'], '1' => ['2', nil], '2' => [nil, ''] }
-    end
-
-    it_behaves_like 'Updating match score'
-  end
-
   context 'With invalid score attribute' do
     context 'Too few elements' do
       let(:score) do
@@ -154,6 +146,14 @@ describe UpdateMatchState do
       expect{subject}.to raise_error 'Invalid set score'
       expect(match.reload.finished_at).to be_nil
     end
+  end
+
+  context 'Sending blank values to delete set score' do
+    let(:score) do
+      { '0' => ['6', '4'], '1' => ['2', '0'], '2' => ['', nil] }
+    end
+
+    it_behaves_like 'Updating match score'
   end
 
   context 'When there is another match in progress on that court' do

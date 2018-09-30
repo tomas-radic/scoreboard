@@ -8,7 +8,7 @@
         <div class="form-group">
           <div class="field">
             <%= number_field_tag :score, game_set.score.first, min: 0, step: 1,
-                name: "score[#{game_set.position-1}][]", class: 'form-control float-right text-right' %>
+                name: "score[#{game_set.position-1}][]", class: 'form-control float-right text-right replace-input-field' %>
           </div>
         </div>
       </div>
@@ -16,7 +16,7 @@
         <div class="form-group">
           <div class="field">
             <%= number_field_tag :score, (game_set.score.last), min: 0, step: 1,
-                name: "score[#{game_set.position-1}][]", class: 'form-control float-left text-left' %>
+                name: "score[#{game_set.position-1}][]", class: 'form-control float-left text-left replace-input-field' %>
           </div>
         </div>
       </div>

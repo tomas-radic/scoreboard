@@ -21,7 +21,7 @@ class UpdateMatchState < Patterns::Service
   def update_match_score!
     match.game_sets.each do |game_set|
       set_score = score[(game_set.position - 1).to_s]
-      next if set_score.nil? || set_score.reject(&:blank?).empty?
+      next if set_score.nil?
 
       save_set_score! game_set, set_score
     end
@@ -29,6 +29,11 @@ class UpdateMatchState < Patterns::Service
 
   def save_set_score!(game_set, set_score)
     raise 'Invalid set score' unless set_score.length == 2
+
+    if set_score.all?(&:blank?)
+      game_set.update! score: []
+      return
+    end
 
     set_score.map!(&:to_i)
     @games_played += set_score.sum

@@ -9,6 +9,7 @@ class Score < Patterns::Calculation
         score_length = score.length
 
         if score_length == 2
+          next if score.all?(&:blank?)
           result << "#{score.first.to_i}:#{score.last.to_i}"
         elsif score_length != 0
           raise '?'

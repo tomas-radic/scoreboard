@@ -18,3 +18,13 @@ function incrementScoreTimeInfo() {
 }
 
 setInterval(incrementScoreTimeInfo, 60000);
+
+
+$(document).on('turbolinks:load', function() {
+  // Event handlers
+
+  // Select all content of .replace-input-field when it is clicked or gets focus
+  $('.replace-input-field').on ('focus click', function() {
+    $(this).select();
+  });
+});

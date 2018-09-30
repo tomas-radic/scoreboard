@@ -70,4 +70,14 @@ describe Score do
 
     it_behaves_like 'Indicating invalid score'
   end
+
+  context 'With both elements nil on one set' do
+    let!(:set1) { FactoryBot.create(:game_set, match: match, score: [6, 3]) }
+    let!(:set2) { FactoryBot.create(:game_set, match: match, score: [4, 6]) }
+    let!(:set3) { FactoryBot.create(:game_set, match: match, score: [nil, nil]) }
+
+    it 'Does not display such set score' do
+      expect(subject).to eq '6:3, 4:6'
+    end
+  end
 end

@@ -27,6 +27,7 @@ class TournamentsController < ApplicationController
     authorize Tournament
     @tournament = Tournament.new whitelisted_params
     @tournament.user = current_user
+
     if @tournament.save
       redirect_to @tournament
     else
@@ -41,6 +42,7 @@ class TournamentsController < ApplicationController
   def update
     authorize @tournament
     @tournament.assign_attributes whitelisted_params
+
     if @tournament.save
       redirect_to @tournament
     else

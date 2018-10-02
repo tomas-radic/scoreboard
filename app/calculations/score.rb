@@ -7,13 +7,9 @@ class Score < Patterns::Calculation
     begin
       match.game_sets.pluck(:score).compact.each do |score|
         score_length = score.length
-
-        if score_length == 2
-          next if score.all?(&:blank?)
-          result << "#{score.first.to_i}:#{score.last.to_i}"
-        elsif score_length != 0
-          raise '?'
-        end
+        raise '?' if (score_length != 2 && score_length != 0)
+        next if score.all?(&:blank?)
+        result << "#{score.first.to_i}:#{score.last.to_i}"
       end
     rescue => e
       return e.message

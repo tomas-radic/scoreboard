@@ -30,11 +30,11 @@ class MatchesController < ApplicationController
     authorize(Match)
 
     @match = CreateMatch.call(current_user.tournament, params).result
-    @back_path = stored_location(fallback: tournament_path(@tournament))
 
     if @match.errors.blank?
       redirect_to(stored_location(fallback: tournament_matches_path(@tournament))) and forget_location
     else
+      @back_path = stored_location(fallback: tournament_path(@tournament))
       render :new
     end
   end
@@ -46,13 +46,13 @@ class MatchesController < ApplicationController
 
   def update
     authorize @match
-    @back_path = stored_location(fallback: tournament_path(@tournament))
 
     UpdateMatch.call(@match, params)
 
     if @match.errors.blank?
       redirect_to(stored_location(fallback: tournament_matches_path(@tournament))) and forget_location
     else
+      @back_path = stored_location(fallback: tournament_path(@tournament))
       render :edit
     end
   end

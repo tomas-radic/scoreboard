@@ -31,10 +31,6 @@ class Match < ApplicationRecord
     self.finished_at.present?
   end
 
-  def scheduled?
-    self.not_before.present?
-  end
-
 
   private
 

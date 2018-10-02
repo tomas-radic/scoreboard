@@ -22,9 +22,10 @@ class ApplicationController < ActionController::Base
 
   def set_tournament_progress
     return if @tournament.blank?
-    matches_count = @tournament.matches.count.to_f
+    matches_count = @tournament.matches.count
     return unless matches_count > 0
 
+    matches_count = matches_count.to_f
     finished_percentage = ((@tournament.matches.finished.count * 100) / matches_count).round
     in_progress_percentage = ((@tournament.matches.in_progress.count * 100) / matches_count).round
     upcoming_percentage = ((@tournament.matches.upcoming.count * 100) / matches_count).round

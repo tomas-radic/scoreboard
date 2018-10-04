@@ -77,7 +77,7 @@ class MatchesController < ApplicationController
       if reload_page
         redirect_to edit_score_tournament_match_path(@tournament, @match)
       else
-        redirect_to tournament_path @tournament
+        redirect_to tournament_matches_path @tournament
       end
     rescue ActiveRecord::RecordInvalid
       redirect_to tournament_court_path @tournament, @match.court

@@ -6,6 +6,9 @@ body, wrapper {
    flex:1 1 auto;
 }
 
+.card {
+  border-radius: 0;
+}
 .card li {
   background-color: inherit;
 }

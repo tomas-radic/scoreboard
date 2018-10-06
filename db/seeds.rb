@@ -40,6 +40,15 @@ def recreate_tournament_for(user)
               GameSet.new,
               GameSet.new
             ]
+          ),
+          Match.new(
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
+            game_sets: [
+              GameSet.new,
+              GameSet.new,
+              GameSet.new
+            ]
           )
         ]
       ),
@@ -56,6 +65,24 @@ def recreate_tournament_for(user)
             ],
             started_at: 80.minutes.ago,
             not_before: Time.zone.parse('12:00')
+          ),
+          Match.new(
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
+            game_sets: [
+              GameSet.new,
+              GameSet.new,
+              GameSet.new
+            ]
+          ),
+          Match.new(
+            participant1: Faker::Name.name,
+            participant2: Faker::Name.name,
+            game_sets: [
+              GameSet.new,
+              GameSet.new,
+              GameSet.new
+            ]
           ),
           Match.new(
             participant1: Faker::Name.name,

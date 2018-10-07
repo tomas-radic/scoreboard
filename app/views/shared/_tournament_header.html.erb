@@ -4,7 +4,7 @@
     <%= t '.close_tournament_text' %>
   </p>
   <p>
-    <%= link_to t('.close_tournament'), tournament_path(@tournament), method: :delete, data: { confirm: 'This completely destroys ALL DATA of this tournament. Sure to proceed?' }, class: 'btn btn-lg btn-danger my-1' %>
+    <%= link_to t('.close_tournament'), tournament_path(@tournament), method: :delete, data: { confirm: t('.sure_destroy_tournament') }, class: 'btn btn-lg btn-danger my-1' %>
     <%= link_to t('.change'), edit_tournament_path(@tournament), class: 'btn btn-xs btn-link' %>
   </p>
 <% else %>

@@ -76,6 +76,7 @@ en:
       change: change
       close_tournament: Close Tournament
       close_tournament_text: This tournament is in progress now. Click button bellow to close this turnament if it has finished already.
+      sure_destroy_tournament: This completely destroys ALL DATA of this tournament. Sure to proceed?
       welcome_html: <strong>Welcome</strong> to this tournament!
   static_pages:
     about:

@@ -76,6 +76,7 @@ sk:
       change: zmeniť
       close_tournament: Skončiť Turnaj
       close_tournament_text: Tento turnaj práve prebieha. Ak ho chceš ukončiť, použi tlačidlo nižšie.
+      sure_destroy_tournament: Tento turnaj a všetky jeho zápasy budú VYMAZANÉ. Naozaj pokračovať?
       welcome_html: <strong>Vitaj</strong> na tomto turnaji!
   static_pages:
     about:

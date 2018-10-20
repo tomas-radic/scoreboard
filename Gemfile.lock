@@ -56,6 +56,10 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    browser-timezone-rails (1.0.2)
+      js_cookie_rails
+      jstz-rails3-plus
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -116,6 +120,10 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    js_cookie_rails (2.2.0)
+      railties (>= 3.1)
+    jstz-rails3-plus (1.0.5)
+      railties (>= 3.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -262,6 +270,7 @@ DEPENDENCIES
   acts_as_list
   attr_extras
   bootstrap
+  browser-timezone-rails
   byebug
   capybara (~> 2.13)
   cocoon

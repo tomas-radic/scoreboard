@@ -18,7 +18,7 @@
     <div class="col">
       <div class="form-group">
         <%= f.label :court_id, t('.court') %>
-        <%= f.select :court_id, @tournament.courts.map { |c| [c.label, c.id] }, class: 'form-control' %>
+        <%= f.select :court_id, @tournament.courts.sorted.map { |c| [c.label, c.id] }, class: 'form-control' %>
       </div>
     </div>
   </div>

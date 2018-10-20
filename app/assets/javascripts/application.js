@@ -17,5 +17,8 @@
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require cocoon
+//= require js.cookie
+//= require jstz
+//= require browser_timezone_rails/set_time_zone
 //= require general
 //= require_tree .

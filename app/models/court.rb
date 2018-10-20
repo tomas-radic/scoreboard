@@ -5,6 +5,8 @@ class Court < ApplicationRecord
 
   validates :label, presence: true
 
+  scope :sorted, -> { order(:label) }
+
   def current_match
     self.matches.where(finished_at: nil).where.not(started_at: nil).first
   end

@@ -1,8 +1,8 @@
 <ul class="nav nav-pills justify-content-center">
-  <% @tournament.courts.each do |court| %>
+  <% @tournament.courts.sorted.each do |court| %>
     <li class="nav-item">
       <%=
-        link_to court.label, tournament_court_path(@tournament, court), 
+        link_to court.label, tournament_court_path(@tournament, court),
             class: courts_switch_link_class(@court, court)
       %>
     </li>

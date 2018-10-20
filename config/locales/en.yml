@@ -7,6 +7,10 @@ en:
       not_before: Not before
       no_matches: No matches.
       score: Score
+    matches_table:
+      label: Match
+      not_before: Not before
+      score: Score
   devise:
     registrations:
       new:

@@ -7,6 +7,10 @@ sk:
       not_before: Začiatok najskôr
       no_matches: Žiadne zápasy.
       score: Skóre
+    matches_table:
+      label: Zápas
+      not_before: Začiatok najskôr
+      score: Skóre
   devise:
     registrations:
       new:

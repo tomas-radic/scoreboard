@@ -1,0 +1,10 @@
+<ul class="nav nav-pills justify-content-center">
+  <% @tournament.courts.each do |court| %>
+    <li class="nav-item">
+      <%=
+        link_to court.label, tournament_court_path(@tournament, court), 
+            class: courts_switch_link_class(@court, court)
+      %>
+    </li>
+  <% end %>
+</ul>

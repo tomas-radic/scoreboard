@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :refresh_score]
-  before_action :load_tournament, only: [:show, :edit, :update, :destroy, :refresh_score]
+  before_action :load_tournament_or_redirect, only: [:show, :edit, :update, :destroy, :refresh_score]
   before_action :set_tournament_progress, only: :show
 
   def index
@@ -65,8 +65,13 @@ class TournamentsController < ApplicationController
 
   private
 
-  def load_tournament
+  def load_tournament_or_redirect
     @tournament = Tournament.find_by(id: params[:id])
+
+    unless @tournament.present?
+      redirect_to_root
+      return
+    end
   end
 
   def whitelisted_params

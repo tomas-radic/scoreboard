@@ -1,5 +1,5 @@
 class CourtsController < ApplicationController
-  before_action :load_records
+  before_action :load_records_or_redirect
   before_action :set_tournament_progress
 
   def show
@@ -23,8 +23,14 @@ class CourtsController < ApplicationController
 
   private
 
-  def load_records
-    @tournament = Tournament.find(params[:tournament_id])
+  def load_records_or_redirect
+    @tournament = Tournament.find_by(id: params[:tournament_id])
+
+    unless @tournament.present?
+      redirect_to_root
+      return
+    end
+
     @court = @tournament.courts.find(params[:id])
     @matches_updatable = policy(@court.tournament).update_matches?
     @scores_updatable = policy(@court.tournament).update_scores?

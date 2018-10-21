@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :edit_score, :update_score]
-  before_action :load_tournament
+  before_action :load_tournament_or_redirect
   before_action :load_match, only: [:edit, :update, :edit_score, :update_score, :destroy]
   before_action :preprocess_params, only: [:create, :update]
   before_action :set_tournament_progress
@@ -87,8 +87,13 @@ class MatchesController < ApplicationController
 
   private
 
-  def load_tournament
-    @tournament = Tournament.find(params[:tournament_id])
+  def load_tournament_or_redirect
+    @tournament = Tournament.find_by(id: params[:tournament_id])
+
+    unless @tournament.present?
+      redirect_to_root
+      return
+    end
   end
 
   def load_match

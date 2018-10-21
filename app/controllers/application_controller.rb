@@ -28,6 +28,14 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
+  def redirect_to_root
+    if user_signed_in?
+      redirect_to root_path and return
+    else
+      redirect_to new_user_session_path and return
+    end
+  end
+
 
   private
 

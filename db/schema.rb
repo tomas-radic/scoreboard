@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180812150145) do
     t.string "participant1", null: false
     t.string "participant2", null: false
     t.integer "position", null: false
-    t.time "not_before"
+    t.datetime "not_before"
     t.datetime "started_at"
     t.datetime "finished_at"
     t.uuid "court_id", null: false

@@ -15,9 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w(
   cocoon.js
-  touch_punch.js
-  idle_page_reload.js
-  tournaments_show.js
-  tournaments_form.js
-  courts.js
 )

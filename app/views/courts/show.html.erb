@@ -19,9 +19,8 @@
   <p><%= t '.no_matches' %></p>
 <% end %>
 
-<%= javascript_include_tag 'idle_page_reload' %>
-
-<% if @matches_updatable %>
+<%= render 'layouts/idle_page_reload_scripts' %>
+<%= if @matches_updatable %>
   <%= render 'show_scripts' %>
-  <%= javascript_include_tag 'touch_punch' %>
+  <%= render 'layouts/touch_punch_scripts' %>
 <% end %>

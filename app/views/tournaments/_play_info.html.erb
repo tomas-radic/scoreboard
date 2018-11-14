@@ -6,7 +6,7 @@
           <strong><%= court_label_for current_match %></strong>
         </p>
         <p class="card-text">
-          <span class="score"><%= Score.result_for current_match %></span><br>
+          <span class="score animate-refresh"><%= Score.result_for current_match %></span><br>
           <small class="text-muted">
             <%= latest_score_update current_match %>
           </small>

@@ -27,4 +27,6 @@ $(document).on('turbolinks:load', function() {
   $('.replace-input-field').on('focus click', function() {
     $(this).select();
   });
+
+  animateRefresh('span.animate-refresh', 'rgba(224, 162, 123, 0.1)');
 });

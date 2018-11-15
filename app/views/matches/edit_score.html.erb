@@ -10,6 +10,7 @@
             <%= number_field_tag :score, game_set.score.first, min: 0, step: 1,
                 name: "score[#{game_set.position-1}][]", class: 'form-control float-right text-right replace-input-field' %>
           </div>
+          <p><small><%= @match.participant1 %></small></p>
         </div>
       </div>
       <div class="col-6">
@@ -18,10 +19,12 @@
             <%= number_field_tag :score, (game_set.score.last), min: 0, step: 1,
                 name: "score[#{game_set.position-1}][]", class: 'form-control float-left text-left replace-input-field' %>
           </div>
+          <p><small><%= @match.participant2 %></small></p>
         </div>
       </div>
     </div>
   <% end %>
+  <hr/>
 
   <div class="row my-2">
     <div class="col">

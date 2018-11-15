@@ -20,7 +20,7 @@
 <% end %>
 
 <%= render 'layouts/idle_page_reload_scripts' %>
-<%= if @matches_updatable %>
+<% if @matches_updatable %>
   <%= render 'show_scripts' %>
   <%= render 'layouts/touch_punch_scripts' %>
 <% end %>

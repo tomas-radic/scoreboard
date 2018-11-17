@@ -44,6 +44,7 @@ en:
       delete_confirmation: Sure to delete this match?
       match_finished: Match finished
       match_started: Match started
+      max_length_notice: (%{max_length} characters max)
       max_sets_to_play: Max sets to play
       not_before: Not before
       participant1: Participant 1

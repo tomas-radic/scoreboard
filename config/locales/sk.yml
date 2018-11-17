@@ -44,6 +44,7 @@ sk:
       delete_confirmation: Naozaj vymazať tento zápas?
       match_finished: Zápas skončený
       match_started: Zápas začatý
+      max_length_notice: (najviac %{max_length} znakov)
       max_sets_to_play: Maximálny počet hraných setov
       not_before: Začiatok najskôr
       participant1: Účastník 1

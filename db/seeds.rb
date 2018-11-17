@@ -1,6 +1,6 @@
 
 def generate_player_name
-  "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+  "#{Faker::Name.first_name} #{Faker::Name.last_name}"[0...Match::MAX_PARTICIPANT_NAME_LENGTH]
 end
 
 def recreate_tournament_for(user)

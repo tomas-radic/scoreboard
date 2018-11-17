@@ -4,7 +4,9 @@ class Match < ApplicationRecord
   has_many :game_sets, dependent: :destroy
   delegate :tournament, to: :court
 
-  validates :participant1, :participant2, presence: true
+  MAX_PARTICIPANT_NAME_LENGTH = 30
+
+  validates :participant1, :participant2, presence: true, length: { maximum: MAX_PARTICIPANT_NAME_LENGTH }
   validate :court_occupied
 
   acts_as_list scope: :court

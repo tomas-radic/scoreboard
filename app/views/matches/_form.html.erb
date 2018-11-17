@@ -4,13 +4,15 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :participant1, t('.participant1') %>
-        <%= f.text_field :participant1, class: add_error_class_to('form-control', @match, :participant1) %>
+        <%= f.text_field :participant1, class: add_error_class_to('form-control', @match, :participant1), maxlength: Match::MAX_PARTICIPANT_NAME_LENGTH %>
+        <small class="float-right font-italic font-weight-light"><%= t('.max_length_notice', max_length: Match::MAX_PARTICIPANT_NAME_LENGTH) %></small>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :participant2, t('.participant2') %>
-        <%= f.text_field :participant2, class: add_error_class_to('form-control', @match, :participant2) %>
+        <%= f.text_field :participant2, class: add_error_class_to('form-control', @match, :participant2), maxlength: Match::MAX_PARTICIPANT_NAME_LENGTH %>
+        <small class="float-right font-italic font-weight-light"><%= t('.max_length_notice', max_length: Match::MAX_PARTICIPANT_NAME_LENGTH) %></small>
       </div>
     </div>
   </div>

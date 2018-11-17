@@ -9,7 +9,7 @@ body, wrapper {
 .card {
   border-radius: 0;
   background-color: #e0a27b;
-  overflow-y: auto;
+  overflow-y: visible;
 }
 .card li {
   background-color: inherit;
@@ -98,9 +98,5 @@ h1, h2, h3, h4, h5, h6, p {
 @media only screen and (min-width: 768px) {
   h1, h2, h3, h4, h5, h6, p {
     word-wrap: normal;
-  }
-
-  .card {
-    overflow-y: visible;
   }
 }

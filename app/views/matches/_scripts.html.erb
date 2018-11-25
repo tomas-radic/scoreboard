@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  $('.increment').click(function() {
+    var textField = $(this).parent().prev();
+    var currentValue = parseInt(textField.val());
+    var newValue = 1;
+
+    if (!isNaN(currentValue)) {
+      newValue = currentValue + 1;
+    }
+
+    textField.val(newValue);
+  });
+</script>

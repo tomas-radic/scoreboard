@@ -21,6 +21,6 @@
 
 <%= render 'layouts/idle_page_reload_scripts' %>
 <% if @matches_updatable %>
-<%= javascript_include_tag 'courts' %>
-  <%= render 'layouts/touch_punch_scripts' %>
+  <%= javascript_include_tag 'touch_punch' %>
+  <%= render 'scripts_sort_matches' %>
 <% end %>

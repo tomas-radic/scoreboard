@@ -1,0 +1,30 @@
+<!-- Don't move this file to assets, accessing @tournament object -->
+
+<script type="text/javascript">
+  $(function(){
+    // always pass csrf tokens on ajax calls
+    $.ajaxSetup({
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    });
+  });
+
+  function setMatchesTableSortable() {
+    $('tbody').sortable({
+      axis: 'y',
+      update: function(event, ui) {
+        var matchPositionsOrder = $('tr').map(function () {
+          return $(this).data('position');
+        }).get();
+
+        $.ajax({
+          data: {matchPositionsOrder:matchPositionsOrder},
+          type: 'POST',
+          url: '<%= reorder_matches_tournament_court_path @tournament, @court %>'
+        });
+      },
+      handle: '.drag-handle'
+    });
+  }
+
+  setMatchesTableSortable();
+</script>

@@ -15,11 +15,14 @@
     <%= render 'matches_table' %>
   </div>
   <%= render 'shared/progress' %>
+  <%= hidden_field_tag :court_public_keys %>
 <% else %>
   <p><%= t '.no_matches' %></p>
 <% end %>
 
-<%= render 'layouts/idle_page_reload_scripts' %>
+<%= render 'shared/scripts_idle_page_reload' %>
+<%= render 'shared/scripts_score_updated_page_reload' %>
+
 <% if @matches_updatable %>
   <%= javascript_include_tag 'touch_punch' %>
   <%= render 'scripts_sort_matches' %>

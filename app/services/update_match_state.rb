@@ -7,6 +7,7 @@ class UpdateMatchState < Patterns::Service
     ActiveRecord::Base.transaction do
       update_match_score!
       update_match_state!
+      broadcast_score_updated
       match.finished_at.nil?
     end
   end
@@ -61,5 +62,9 @@ class UpdateMatchState < Patterns::Service
 
   def save_match_state!
     match.update! @state_attrs
+  end
+
+  def broadcast_score_updated
+    ActionCable.server.broadcast 'score_updated_channel', court_public_key: match.court.public_key
   end
 end

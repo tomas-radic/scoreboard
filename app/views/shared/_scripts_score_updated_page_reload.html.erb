@@ -1,9 +1,0 @@
-<script type="text/javascript">
-  $(document).on('turbolinks:load', function() {
-    var courtPublicKeys = [];
-    <% @court_public_keys.each do |key| %>
-      courtPublicKeys.push('<%= key %>');
-    <% end %>
-    $('#court_public_keys').val(JSON.stringify(courtPublicKeys));
-  });
-</script>

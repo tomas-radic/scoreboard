@@ -15,6 +15,7 @@
       var thisActivityTime = $.now();
 
       if ((thisActivityTime - lastActivityTime) > 240000) {
+        console.log('reload');
         location.reload();
       }
 

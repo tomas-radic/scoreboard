@@ -3,7 +3,6 @@ class CourtsController < ApplicationController
   before_action :set_tournament_progress
 
   def show
-    @court_public_keys = [@court.public_key]
     store_location
   end
 

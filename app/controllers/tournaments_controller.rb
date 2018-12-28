@@ -10,7 +10,6 @@ class TournamentsController < ApplicationController
 
   def show
     redirect_to root_url if @tournament.nil? && user_signed_in?
-    @court_public_keys = @tournament.courts.map(&:public_key)
   end
 
   def new

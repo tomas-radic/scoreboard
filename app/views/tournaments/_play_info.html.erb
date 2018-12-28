@@ -10,7 +10,7 @@
           <small class="text-muted">
             <%= latest_score_update current_match %>
           </small>
-          <%= link_to refresh_score_tournament_path(@tournament), remote: true, class: 'py-1 px-2 update-score-link' do %>
+          <%= link_to refresh_score_tournament_path(@tournament), remote: true, class: 'py-1 px-2' do %>
             <%= fa_icon "retweet" %>
           <% end %>
         </p>

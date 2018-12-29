@@ -1,39 +1,31 @@
 module MatchesHelper
-  def all_matches_row_for(match, update_allowed, score_update_allowed)
-    content_tag :tr, class: decoration_class_for(match) do
-      result = content_tag :td do
-        check_box_tag :finished, :finished, match.finished?, disabled: true
+  def handle_cell_for(match, draggable:)
+    content_tag :td, class: draggable ? 'drag-handle' : '' do
+      if draggable
+        fa_icon 'bars'
+      elsif match.finished?
+        fa_icon 'check'
       end
+    end
+  end
 
-      if update_allowed
-        result += content_tag :td do
-          link_to match.label, edit_tournament_match_path(match.tournament, match)
-        end
+  def label_cell_for(match, editable:)
+    content_tag :td do
+      if editable
+        link_to match.label, edit_tournament_match_path(match.tournament, match)
       else
-        result += content_tag :td do
-          match.label
-        end
+        match.label
       end
+    end
+  end
 
-      result += content_tag :td do
-        link_to match.court.label, tournament_court_path(match.tournament, match.court), class: 'btn btn-sm btn-success'
-      end
-
-      if score_update_allowed
-        result += content_tag :td do
-          link_to(Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success') + " <small><i>#{latest_score_update match, true}</i></small>".html_safe
-        end
+  def score_cell_for(match, editable:)
+    content_tag :td do
+      if editable
+        link_to(Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success') + " <small><i>#{latest_score_update match, true}</i></small>".html_safe
       else
-        result += content_tag :td do
-          "#{Score.result_for(match)} <small><i>#{latest_score_update match, true}</i></small>".html_safe
-        end
+        "#{Score.result_for(match)} <small><i>#{latest_score_update match, true}</i></small>".html_safe
       end
-
-      result += content_tag :td do
-        NotBeforeInfo.result_for match
-      end
-
-      result
     end
   end
 

@@ -20,7 +20,24 @@
       </thead>
       <tbody>
         <% @matches.each do |match| %>
-          <%= all_matches_row_for match, @matches_updatable, @scores_updatable %>
+          <%= content_tag :tr, class: decoration_class_for(match) do %>
+            <%=
+              cells = content_tag :td do
+                fa_icon 'check' if match.finished?
+              end
+
+              cells += label_cell_for match, editable: @matches_updatable
+              cells += content_tag :td do
+                link_to match.court.label, tournament_court_path(match.tournament, match.court), class: 'btn btn-sm btn-success'
+              end
+              cells += score_cell_for match, editable: @scores_updatable
+              cells += content_tag :td do
+                NotBeforeInfo.result_for match
+              end
+
+              cells
+            %>
+          <% end %>
         <% end %>
       </tbody>
     </table>

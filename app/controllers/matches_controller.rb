@@ -9,6 +9,7 @@ class MatchesController < ApplicationController
     @matches = @tournament.matches.sorted
     @matches_updatable = policy(@tournament).update_matches?
     @scores_updatable = policy(@tournament).update_scores?
+    @court_public_keys = @tournament.courts.map(&:public_key)
     store_location
   end
 
@@ -68,13 +69,13 @@ class MatchesController < ApplicationController
 
   def update_score
     begin
-      reload_page = UpdateMatchState.call(
+      back_to_edit_score = UpdateMatchState.call(
         @match,
         params[:score],
         params['finished'].present?
       ).result
 
-      if reload_page
+      if back_to_edit_score
         redirect_to edit_score_tournament_match_path(@tournament, @match)
       else
         redirect_to tournament_matches_path @tournament

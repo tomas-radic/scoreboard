@@ -15,7 +15,7 @@
       var thisActivityTime = $.now();
 
       if ((thisActivityTime - lastActivityTime) > 240000) {
-        location.reload();
+        refreshScores();  // this function to be defined on pages
       }
 
       lastActivityTime = thisActivityTime;

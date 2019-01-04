@@ -1,0 +1,7 @@
+<script type="text/javascript">
+  function refreshScores() {
+    $.ajax({
+      url: '<%= refresh_score_tournament_path @tournament %>'
+    });
+  }
+</script>

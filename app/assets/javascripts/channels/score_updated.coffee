@@ -10,4 +10,5 @@ App.score_updated = App.cable.subscriptions.create "ScoreUpdatedChannel",
     courtPublicKeys = JSON.parse($('#court_public_keys').val())
 
     if data['court_public_key'] in courtPublicKeys
-      location.reload()
+      refreshScores()   # this function to be defined on pages
+      # location.reload()

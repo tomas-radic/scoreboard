@@ -27,6 +27,10 @@ RSpec.describe TournamentsController, type: :controller do
         it 'Responds with status OK' do
           expect(subject).to have_http_status(:ok)
         end
+
+        it 'Renders index template' do
+          expect(subject).to render_template :index
+        end
       end
     end
 

@@ -29,6 +29,9 @@
     <div class="col">
       <div class="form-group">
         <%= label_tag :max_sets_to_play, t('.max_sets_to_play') %>
+        <span data-toggle="tooltip" data-placement="top", title="<%= t('.max_sets_to_play_info') %>">
+          <%= fa_icon 'question-circle' %>
+        </span>
         <%= number_field_tag :max_sets_to_play, @match.game_sets.size, min: 1, step: 2, class: 'form-control' %>
       </div>
     </div>
@@ -65,3 +68,5 @@
     <% end %>
   </p>
 <% end %>
+
+<%= render 'scripts_form' %>

@@ -8,10 +8,10 @@
   </div>
   <%= render 'shared/progress' %>
   <%= hidden_field_tag :court_public_keys %>
-<% else %>
-  <p><%= t '.tournament_finished' %></p>
-<% end %>
 
-<%= render 'scripts_refresh_scores' %>
-<%= render 'shared/scripts_idle_page_reload' %>
-<%= render 'shared/scripts_score_updated_page_reload' %>
+  <%= render 'scripts_refresh_scores' %>
+  <%= render 'shared/scripts_idle_page_reload' %>
+  <%= render 'shared/scripts_score_updated_page_reload' %>
+<% else %>
+  <p><%= t '.tournament_not_found' %></p>
+<% end %>

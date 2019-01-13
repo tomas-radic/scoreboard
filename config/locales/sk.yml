@@ -74,8 +74,10 @@ sk:
       sign_out: Odhlásiť sa
       tournament: Turnaj
     no_tournament_header:
+      goto_open_tournament: Otvorený Turnaj
+      goto_open_tournament_text: Prejsť na turnaj, ktorý je teraz stále otvorený.
       keep_training_html: Ale ... <b>trénuj na ďalší!</b> :)
-      no_tournament_caption: Žiadny otvorený turnaj.
+      tournament_not_found_caption: Turnaj sa nenašiel.
       open_tournament: Otvoriť Turnaj
       open_tournament_text: Použi tlačidlo nižšie ak chceš otvoriť nový turnaj.
     tournament_header:
@@ -95,6 +97,9 @@ sk:
       pricing_text: Web môže pri prvom kontakte po dlhšom čase nabiehať pomalšie (5-7 sekúnd). Je to z dôvodu, že prevádzka na serveri zatiaľ nie je zaplatená a web tam beží zadarmo. Používanie tohto webu organizátormi turnajov je zatiaľ taktiež zadarmo, prípadná malá zľava zo štartovného pre tvorcu tohto webu môže potešiť :)
   switch_locale_label: English
   tournaments:
+    court:
+      go_to_court: Prejsť na kurt
+      no_matches: Žiadne zápasy.
     court_fields:
       label: Označenie
     form:
@@ -108,7 +113,5 @@ sk:
     play_info:
       next: 'nasleduje:'
       not_before: najskôr o
-    court:
-      go_to_court: Prejsť na kurt
-      no_matches: Žiadne zápasy.
+    show:
       tournament_not_found: Turnaj nebol nájdený, možno už skončil.

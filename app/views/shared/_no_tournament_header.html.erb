@@ -1,13 +1,12 @@
-<h2><%= t('.no_tournament_caption') %></h2>
-<% if policy(Tournament).create? %>
-  <p>
-    <em><%= t '.open_tournament_text' %></em>
-  </p>
-  <p>
-    <%= link_to t('.open_tournament'), new_tournament_path, class: 'btn btn-lg btn-success my-1' %>
-  </p>
+<h2><%= t('.tournament_not_found_caption') %></h2>
+<% if user_signed_in? %>
+  <% if current_user.tournament.present? %>
+    <p><em><%= t '.goto_open_tournament_text' %></em></p>
+    <p><%= link_to t('.goto_open_tournament'), tournament_path(current_user.tournament), class: 'btn btn-lg btn-success my-1' %></p>
+  <% else %>
+    <p><em><%= t '.open_tournament_text' %></em></p>
+    <p><%= link_to t('.open_tournament'), new_tournament_path, class: 'btn btn-lg btn-success my-1' %></p>
+  <% end %>
 <% else %>
-  <p>
-    <em><%= t '.keep_training_html' %></em>
-  </p>
+  <p><em><%= t '.keep_training_html' %></em></p>
 <% end %>

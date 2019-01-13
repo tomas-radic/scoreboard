@@ -25,7 +25,7 @@ RSpec.describe TournamentsController, type: :controller do
 
       context 'And no existing tournament of this user' do
         it 'Responds with status OK' do
-          expect(subject).to have_http_status(:ok)
+          expect(subject).to have_http_status :ok
         end
 
         it 'Renders index template' do
@@ -37,6 +37,35 @@ RSpec.describe TournamentsController, type: :controller do
     context 'Without signed in user' do
       it 'Redirects to sign in path' do
         expect(subject).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe 'GET show' do
+    subject { get :show, params: { id: id } }
+
+    context 'With existing tournament requested' do
+      let!(:tournament) { FactoryBot.create(:tournament) }
+      let(:id) { tournament.id }
+
+      it 'Responds with status OK' do
+        expect(subject).to have_http_status :ok
+      end
+
+      it 'Renders show template' do
+        expect(subject).to render_template :show
+      end
+    end
+
+    context 'When tournament does not exist' do
+      let(:id) { 'abc' }
+
+      it 'Responds with status OK' do
+        expect(subject).to have_http_status :ok
+      end
+
+      it 'Renders show template' do
+        expect(subject).to render_template :show
       end
     end
   end

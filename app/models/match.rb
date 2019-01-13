@@ -7,6 +7,7 @@ class Match < ApplicationRecord
   MAX_PARTICIPANT_NAME_LENGTH = 30
 
   validates :participant1, :participant2, presence: true, length: { maximum: MAX_PARTICIPANT_NAME_LENGTH }
+  validates :court, presence: true
   validate :court_occupied
 
   acts_as_list scope: :court

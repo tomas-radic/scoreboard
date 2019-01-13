@@ -33,7 +33,7 @@ module MatchUpdating
 
   def assign_game_sets
     max_sets_to_play = attributes[:max_sets_to_play].to_i
-    return unless max_sets_to_play > 0
+    max_sets_to_play = 3 unless [1, 3, 5].include? max_sets_to_play
 
     game_sets_to_create = max_sets_to_play - match.game_sets.count
     game_sets_to_create.times do
@@ -57,6 +57,7 @@ module MatchUpdating
   end
 
   def verify_court!
+    return if attributes[:match][:court_id].nil?
     raise 'Court ID not known!' unless tournament.courts.ids.include? attributes[:match][:court_id]
   end
 end

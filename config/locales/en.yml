@@ -46,6 +46,7 @@ en:
       match_started: Match started
       max_length_notice: (%{max_length} characters max)
       max_sets_to_play: Max sets to play
+      max_sets_to_play_info: 'Maximum number of sets to be played during this match: 1, 3 or 5'
       not_before: Not before
       participant1: Participant 1
       participant2: Participant 2
@@ -73,8 +74,10 @@ en:
       sign_out: Sign out
       tournament: Tournament
     no_tournament_header:
+      goto_open_tournament: Current Tournament
+      goto_open_tournament_text: Go to currently open tournament.
       keep_training_html: But ... <b>keep training!</b> :)
-      no_tournament_caption: No tournament here.
+      tournament_not_found_caption: Tournament not found.
       open_tournament: Open Tournament
       open_tournament_text: Press button bellow to open new tournament.
     tournament_header:
@@ -94,6 +97,9 @@ en:
       pricing_text: The website may be loaded slower (5-7 seconds) on the first contact after a some time period of inactivity. This is because the hosting on the server is not yet paid and the site runs for free. The use of this site by the organizers is also free of charge, anyway any small discount from the tournament entry fee for the creator of this site is appreciated :)
   switch_locale_label: Slovensky
   tournaments:
+    court:
+      go_to_court: Go to court
+      no_matches: No matches here.
     court_fields:
       label: Label
     form:
@@ -107,7 +113,5 @@ en:
     play_info:
       next: 'next:'
       not_before: not before
-    court:
-      go_to_court: Go to court
-      no_matches: No matches here.
-      tournament_finished: Tournament not found, may have finished.
+    show:
+      tournament_not_found: Tournament not found, may have finished.

@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :refresh_score]
-  before_action :load_tournament_or_redirect, only: [:show, :edit, :update, :destroy, :refresh_score]
+  before_action :load_tournament_or_redirect, only: [:edit, :update, :destroy, :refresh_score]
   before_action :set_tournament_progress, only: :show
 
   def index
@@ -9,8 +9,8 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    redirect_to root_url if @tournament.nil? && user_signed_in?
-    @court_public_keys = @tournament.courts.map(&:public_key)
+    @tournament = Tournament.find_by(id: params[:id])
+    @court_public_keys = @tournament.courts.map(&:public_key) if @tournament.present?
   end
 
   def new

@@ -1,17 +1,19 @@
 class MatchPolicy < ApplicationPolicy
-  def new?
-    create?
-  end
-
   def create?
-    user.present?
-  end
-
-  def edit?
-    update?
+    user.tournament.present?
   end
 
   def update?
-    user&.tournament&.id == record.tournament.id
+    record_belongs_to_user?
+  end
+
+  def destroy?
+    record_belongs_to_user?
+  end
+
+  private
+
+  def record_belongs_to_user?
+    user.tournament&.id == record.tournament.id
   end
 end

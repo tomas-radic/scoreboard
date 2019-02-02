@@ -107,16 +107,10 @@ RSpec.describe TournamentsController, type: :controller do
   describe 'POST create' do
     subject { post :create, params: parameters }
 
-    let(:headers) do
-      {
-        "ACCEPT" => "application/json"
-      }
-    end
-
     let(:parameters) do
       {
         "tournament" => {
-          "label" => "Open Space",
+          "label" => "Wimbledon",
           "public_score_update" => "1",
           "courts_attributes" => {
             "0" => {
@@ -149,7 +143,7 @@ RSpec.describe TournamentsController, type: :controller do
             subject
             tournament = user.reload.tournament
             expect(tournament).not_to be_nil
-            expect(tournament.label).to eq 'Open Space'
+            expect(tournament.label).to eq 'Wimbledon'
             expect(tournament.public_score_update).to be true
             expect(tournament.courts.count).to eq 3
           end
@@ -169,10 +163,16 @@ RSpec.describe TournamentsController, type: :controller do
       end
 
       context 'Having another tournament currently open' do
-        let!(:tournament) { FactoryBot.create(:tournament, user: user) }
+        let!(:original_tournament) { FactoryBot.create(:tournament, user: user) }
 
         it 'Redirects to root' do
           expect(subject).to redirect_to root_path
+        end
+
+        it 'Does not create new tournament' do
+          subject
+
+          expect(user.reload.tournament.id).to eq original_tournament.id
         end
       end
     end
@@ -247,7 +247,7 @@ RSpec.describe TournamentsController, type: :controller do
     let(:parameters) do
       {
         "tournament" => {
-          "label" => "Open Space",
+          "label" => "Wimbledon",
           "public_score_update" => "0",
           "courts_attributes" => {
             "0" => {
@@ -290,7 +290,7 @@ RSpec.describe TournamentsController, type: :controller do
             subject
 
             tournament = user.reload.tournament
-            expect(tournament.label).to eq 'Open Space'
+            expect(tournament.label).to eq 'Wimbledon'
             expect(tournament.public_score_update).to be false
             expect(tournament.courts.pluck :label).to match_array ['1', '3']
           end
@@ -325,7 +325,7 @@ RSpec.describe TournamentsController, type: :controller do
           subject
           tournament.reload
 
-          expect(tournament.label).not_to eq 'Open Space'
+          expect(tournament.label).not_to eq 'Wimbledon'
           expect(tournament.courts.count).to eq 3
         end
       end

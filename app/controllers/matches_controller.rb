@@ -14,7 +14,6 @@ class MatchesController < ApplicationController
   end
 
   def new
-    authorize Match
     @match = Match.new(
       court_id: params[:court_id],
       game_sets: [
@@ -24,12 +23,12 @@ class MatchesController < ApplicationController
       ]
     )
 
+    authorize @match
     @back_path = stored_location(fallback: tournament_path(@tournament))
   end
 
   def create
-    authorize(Match)
-
+    # authorization handled in service object
     @match = CreateMatch.call(current_user.tournament, params).result
 
     if @match.errors.blank?
@@ -47,7 +46,6 @@ class MatchesController < ApplicationController
 
   def update
     authorize @match
-
     UpdateMatch.call(@match, params)
 
     if @match.errors.blank?
@@ -59,6 +57,8 @@ class MatchesController < ApplicationController
   end
 
   def destroy
+    authorize @match
+
     @match.destroy
     redirect_to stored_location(fallback: tournament_path(@tournament))
   end
@@ -92,8 +92,7 @@ class MatchesController < ApplicationController
     @tournament = Tournament.find_by(id: params[:tournament_id])
 
     unless @tournament.present?
-      redirect_to_root
-      return
+      redirect_to tournament_path(id: params[:tournament_id]) and return
     end
   end
 

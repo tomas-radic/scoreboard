@@ -95,6 +95,12 @@ h1, h2, h3, h4, h5, h6, p {
   word-wrap: break-word;
 }
 
+.content-center {
+  text-align: center;
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+
 @media only screen and (min-width: 768px) {
   h1, h2, h3, h4, h5, h6, p {
     word-wrap: normal;

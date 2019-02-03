@@ -1,6 +1,6 @@
 <h1><%= @match.label %></h1>
 <%= form_tag update_score_tournament_match_path(@tournament, @match) do %>
-  <% @match.game_sets.each do |game_set| %>
+  <% @match.game_sets.each_with_index do |game_set, i| %>
     <hr/>
     <h3><%= "Set #{game_set.position}" %></h3>
     <div class="row">
@@ -29,6 +29,16 @@
         </div>
       </div>
     </div>
+    <% if i < (@game_sets_count - 1) %>
+      <div class="row">
+        <div class="col">
+          <p class="content-center">
+            <%= submit_tag t('.submit'), class: 'btn btn-block btn-sm btn-success d-sm-none d-block' %>
+            <%= submit_tag t('.submit'), class: 'btn btn-sm btn-success d-none d-sm-block' %>
+          </p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
   <hr/>
 
@@ -43,10 +53,13 @@
 
   <div class="row">
     <div class="col">
-      <div class="text-center">
-        <p><%= submit_tag t('.submit'), class: 'btn btn-lg btn-success' %></p>
-        <p><%= link_to t('.quit'), @back_path %></p>
-      </div>
+      <p class="content-center">
+        <%= submit_tag t('.submit'), class: 'btn btn-block btn-lg btn-success d-sm-none d-block' %>
+        <%= submit_tag t('.submit'), class: 'btn btn-lg btn-success d-none d-sm-block' %>
+      </p>
+      <p class="content-center">
+        <%= link_to t('.quit'), @back_path %>
+      </p>
     </div>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 class MatchPolicy < ApplicationPolicy
   def create?
-    user.tournament.present?
+    user&.tournament.present?
   end
 
   def update?
@@ -14,6 +14,6 @@ class MatchPolicy < ApplicationPolicy
   private
 
   def record_belongs_to_user?
-    user.tournament&.id == record.tournament.id
+    user&.tournament&.id == record.tournament.id
   end
 end

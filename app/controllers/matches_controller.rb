@@ -65,6 +65,7 @@ class MatchesController < ApplicationController
 
   def edit_score
     @back_path = stored_location(fallback: tournament_path(@tournament))
+    @game_sets_count = @match.game_sets.count
   end
 
   def update_score

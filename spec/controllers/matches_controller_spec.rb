@@ -4,31 +4,33 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
-shared_examples 'Responding with success' do
-  it 'Responds with success' do
-    expect(subject).to have_http_status :ok
-  end
-end
-
-shared_examples 'Redirecting to root' do
-  it 'Redirects to root' do
-    expect(subject).to redirect_to root_path
-  end
-end
-
-shared_examples 'Redirecting to login' do
-  it 'Redirects to login' do
-    expect(subject).to redirect_to new_user_session_path(locale: nil)
-  end
-end
-
-shared_examples 'Redirected' do
-  it 'Redirects' do
-    expect(subject).to have_http_status 302
-  end
-end
-
 RSpec.describe MatchesController, type: :controller do
+
+  shared_examples 'Responding with success' do
+    it 'Responds with success' do
+      expect(subject).to have_http_status :ok
+    end
+  end
+
+  shared_examples 'Raising pundit exception' do
+    it 'Raises pundit exception' do
+      expect{subject}.to raise_error Pundit::NotAuthorizedError
+    end
+  end
+
+  shared_examples 'Redirecting to login' do
+    it 'Redirects to login' do
+      expect(subject).to redirect_to new_user_session_path(locale: nil)
+    end
+  end
+
+  shared_examples 'Redirected' do
+    it 'Redirects' do
+      expect(subject).to have_http_status 302
+    end
+  end
+
+
   let(:non_existing_id) { 'non-existing-id' }
 
   describe 'GET index' do
@@ -79,7 +81,7 @@ RSpec.describe MatchesController, type: :controller do
         let!(:tournament) { FactoryBot.create(:tournament) }
         let(:parameters) { { tournament_id: tournament.id } }
 
-        it_behaves_like 'Redirecting to root'
+        it_behaves_like 'Raising pundit exception'
       end
     end
 
@@ -179,13 +181,7 @@ RSpec.describe MatchesController, type: :controller do
             parameters['tournament_id'] = another_tournament.id
           end
 
-          it 'Does not create new match' do
-            subject
-
-            expect(Match.count).to eq 0
-          end
-
-          it_behaves_like 'Redirecting to root'
+          it_behaves_like 'Raising pundit exception'
         end
       end
     end
@@ -235,7 +231,7 @@ RSpec.describe MatchesController, type: :controller do
         let!(:match) { FactoryBot.create(:match) }
         let(:parameters) { { tournament_id: match.tournament.id, id: match.id } }
 
-        it_behaves_like 'Redirecting to root'
+        it_behaves_like 'Raising pundit exception'
       end
     end
 
@@ -322,15 +318,7 @@ RSpec.describe MatchesController, type: :controller do
             parameters['id'] = match.id
           end
 
-          it 'Does not update the match' do
-            subject
-
-            match.reload
-            expect(match.participant1).not_to eq 'Roger Federer'
-            expect(match.participant2).not_to eq 'Stefanos Tsitsipas'
-          end
-
-          it_behaves_like 'Redirecting to root'
+          it_behaves_like 'Raising pundit exception'
         end
       end
 
@@ -342,15 +330,7 @@ RSpec.describe MatchesController, type: :controller do
           parameters['id'] = match.id
         end
 
-        it 'Does not update the match' do
-          subject
-
-          match.reload
-          expect(match.participant1).not_to eq 'Roger Federer'
-          expect(match.participant2).not_to eq 'Stefanos Tsitsipas'
-        end
-
-        it_behaves_like 'Redirecting to root'
+        it_behaves_like 'Raising pundit exception'
       end
     end
 
@@ -405,13 +385,7 @@ RSpec.describe MatchesController, type: :controller do
         let!(:tournament) { FactoryBot.create(:tournament) }
         let!(:match) { FactoryBot.create(:match, court: tournament.courts.first) }
 
-        it 'Does not delete the match' do
-          subject
-
-          expect(Match.count).to eq 1
-        end
-
-        it_behaves_like 'Redirecting to root'
+        it_behaves_like 'Raising pundit exception'
       end
     end
 

@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   protect_from_forgery with: :exception
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_action :set_locale
 
@@ -72,9 +71,5 @@ class ApplicationController < ActionController::Base
       in_progress: in_progress_percentage,
       upcoming: upcoming_percentage
     }
-  end
-
-  def user_not_authorized
-    redirect_to root_path
   end
 end

@@ -5,6 +5,20 @@ RSpec.configure do |config|
 end
 
 RSpec.describe TournamentsController, type: :controller do
+
+  shared_examples 'Raising pundit exception' do
+    it 'Raises pundit exception' do
+      expect{subject}.to raise_error Pundit::NotAuthorizedError
+    end
+  end
+
+  shared_examples 'Redirecting to root' do
+    it 'Redirects to root' do
+      expect(subject).to redirect_to root_url
+    end
+  end
+
+
   describe "GET index" do
     subject { get :index }
 
@@ -91,8 +105,8 @@ RSpec.describe TournamentsController, type: :controller do
       context 'Having another open tournament' do
         let!(:tournament) { FactoryBot.create(:tournament, user: user) }
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
+        it 'Raises pundit exception' do
+          expect{subject}.to raise_error Pundit::NotAuthorizedError
         end
       end
     end
@@ -165,15 +179,7 @@ RSpec.describe TournamentsController, type: :controller do
       context 'Having another tournament currently open' do
         let!(:original_tournament) { FactoryBot.create(:tournament, user: user) }
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
-
-        it 'Does not create new tournament' do
-          subject
-
-          expect(user.reload.tournament.id).to eq original_tournament.id
-        end
+        it_behaves_like 'Raising pundit exception'
       end
     end
 
@@ -211,17 +217,13 @@ RSpec.describe TournamentsController, type: :controller do
         let!(:tournament) { FactoryBot.create(:tournament) }
         let(:tournament_id) { tournament.id }
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
+        it_behaves_like 'Raising pundit exception'
       end
 
       context 'Editing non existing tournament' do
         let(:tournament_id) { 'abc' }
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
+        it_behaves_like 'Redirecting to root'
       end
     end
 
@@ -317,17 +319,7 @@ RSpec.describe TournamentsController, type: :controller do
           parameters['id'] = tournament.id
         end
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
-
-        it 'Does not update the tournament' do
-          subject
-          tournament.reload
-
-          expect(tournament.label).not_to eq 'Wimbledon'
-          expect(tournament.courts.count).to eq 3
-        end
+        it_behaves_like 'Raising pundit exception'
       end
 
       context 'Updating non existing tournament' do
@@ -335,9 +327,7 @@ RSpec.describe TournamentsController, type: :controller do
           parameters['id'] = 'abc'
         end
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
+        it_behaves_like 'Redirecting to root'
       end
     end
 
@@ -389,23 +379,13 @@ RSpec.describe TournamentsController, type: :controller do
         let!(:tournament) { FactoryBot.create(:tournament) }
         let(:tournament_id) { tournament.id }
 
-        it 'Does not delete the tournament' do
-          subject
-
-          expect(Tournament.last.id).to eq tournament.id
-        end
-
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
+        it_behaves_like 'Raising pundit exception'
       end
 
       context 'Deleting non existing tournament' do
         let(:tournament_id) { 'abc' }
 
-        it 'Redirects to root' do
-          expect(subject).to redirect_to root_path
-        end
+        it_behaves_like 'Redirecting to root'
       end
     end
 

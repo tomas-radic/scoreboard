@@ -9,9 +9,9 @@ module MatchesHelper
     end
   end
 
-  def label_cell_for(match, editable:)
+  def label_cell_for(match, updatable:)
     content_tag :td do
-      if editable
+      if updatable
         link_to match.label, edit_tournament_match_path(match.tournament, match)
       else
         match.label
@@ -19,9 +19,9 @@ module MatchesHelper
     end
   end
 
-  def score_cell_for(match, editable:)
+  def score_cell_for(match, updatable:)
     content_tag :td do
-      if editable
+      if updatable
         link_to(Score.result_for(match), edit_score_tournament_match_path(match.tournament, match), class: 'btn btn-sm btn-success') + " <small><i>#{latest_score_update match, true}</i></small>".html_safe
       else
         "#{Score.result_for(match)} <small><i>#{latest_score_update match, true}</i></small>".html_safe

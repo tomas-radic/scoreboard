@@ -8,6 +8,11 @@ FactoryBot.define do
       started_at { 2.hours.ago }
     end
 
+    trait :in_progress do
+      started_at { 30.minutes.ago }
+      finished_at { nil }
+    end
+
     trait :finished do
       started_at { 2.hours.ago }
       finished_at { 30.minutes.ago }

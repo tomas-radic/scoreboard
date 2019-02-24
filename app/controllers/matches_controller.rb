@@ -8,12 +8,14 @@ class MatchesController < ApplicationController
   def index
     @matches = @tournament.matches.sorted
     @matches_updatable = policy(@tournament).update_matches?
-    @scores_updatable = policy(@tournament).update_scores?
+    @court_occupations = court_occupations_of @tournament
     @court_public_keys = @tournament.courts.map(&:public_key)
     store_location
   end
 
   def new
+    authorize @tournament, :manage?
+
     @match = Match.new(
       court_id: params[:court_id],
       game_sets: [
@@ -23,12 +25,11 @@ class MatchesController < ApplicationController
       ]
     )
 
-    authorize @match
     @back_path = stored_location(fallback: tournament_path(@tournament))
   end
 
   def create
-    # authorization handled in service object
+    authorize @tournament, :manage?
     @match = CreateMatch.call(current_user.tournament, params).result
 
     if @match.errors.blank?
@@ -64,6 +65,9 @@ class MatchesController < ApplicationController
   end
 
   def edit_score
+    authorize @match
+
+    redirect_to_court unless CourtDecorator.new(@match.court).available_for? @match, court_occupations_of(@tournament)
     @back_path = stored_location(fallback: tournament_path(@tournament))
     @game_sets_count = @match.game_sets.count
   end
@@ -109,5 +113,13 @@ class MatchesController < ApplicationController
         params[:match]['not_before(4i)'] = ""
         params[:match]['not_before(5i)'] = ""
     end
+  end
+
+  def redirect_to_court
+    redirect_to tournament_court_path tournament_id: @match.tournament.id, id: @match.court_id
+  end
+
+  def court_occupations_of(tournament)
+    tournament.courts.joins(:matches).merge(Match.in_progress).group('courts.id').count
   end
 end

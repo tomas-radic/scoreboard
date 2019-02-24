@@ -13,8 +13,8 @@
         <%= content_tag :tr, class: decoration_class_for(match), data: { position: match.position } do %>
           <%=
             cells = handle_cell_for match, draggable: (@matches_updatable && !match.started?)
-            cells += label_cell_for match, editable: @matches_updatable
-            cells += score_cell_for match, editable: @scores_updatable
+            cells += label_cell_for match, updatable: @matches_updatable
+            cells += score_cell_for match, updatable: policy(match).update_score? && CourtDecorator.new(match.court).available_for?(match, @court_occupations)
             cells += content_tag :td do
               NotBeforeInfo.result_for match
             end

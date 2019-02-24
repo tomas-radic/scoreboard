@@ -5,10 +5,10 @@ class UpdateMatch < Patterns::Service
 
   def call
     @tournament = match.tournament
-    verify_court!
 
     preprocess_attributes
     assign_attributes
+    assign_court
     assign_game_sets
     set_match_state
     match.save

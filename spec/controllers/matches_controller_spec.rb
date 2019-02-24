@@ -153,14 +153,6 @@ RSpec.describe MatchesController, type: :controller do
           end
         end
 
-        context 'And missing court id' do
-          it 'Raises error' do
-            parameters['match']['court_id'] = ''
-
-            expect{subject}.to raise_error 'Court ID not known!'
-          end
-        end
-
         context 'And not before hour provided, but not before minute blank' do
           it 'Sets not before minutes to 00' do
             parameters['match']['not_before(5i)'] = ''
@@ -176,7 +168,7 @@ RSpec.describe MatchesController, type: :controller do
           it 'Raises error' do
             parameters['match']['court_id'] = another_tournament.courts.last.id
 
-            expect{subject}.to raise_error 'Court ID not known!'
+            expect{subject}.to raise_error ActiveRecord::RecordNotFound
           end
         end
 
@@ -187,13 +179,13 @@ RSpec.describe MatchesController, type: :controller do
             parameters['tournament_id'] = another_tournament.id
           end
 
-          it 'Creates new match for tournament of the user' do
+          it 'Does not create new match' do
             subject
 
-            expect(user.tournament.matches.count).to eq 1
+            expect(Match.count).to eq 0
           end
 
-          it_behaves_like 'Redirected'
+          it_behaves_like 'Redirecting to root'
         end
       end
     end
@@ -281,8 +273,6 @@ RSpec.describe MatchesController, type: :controller do
       parameters['id'] = match.id
       parameters['match']['court_id'] = tournament.courts.last.id
     end
-
-
 
     context 'With signed in user' do
       let!(:user) { FactoryBot.create(:user) }
@@ -434,7 +424,53 @@ RSpec.describe MatchesController, type: :controller do
   end
 
   describe 'GET edit_score' do
+    subject { get :edit_score, params: parameters }
 
+    context 'Match exists on given tournament' do
+      let!(:court) { FactoryBot.create(:court) }
+      let(:parameters) { { tournament_id: match2.tournament.id, id: match2.id } }
+
+      context 'There is no other match being played on the court' do
+        let!(:match1) { FactoryBot.create(:match, court: court) }
+        let!(:match2) { FactoryBot.create(:match, court: court) }
+
+        it 'Renders edit_score template' do
+          expect(subject).to render_template :edit_score
+        end
+      end
+
+      context 'There is other match being already finished on the court' do
+        let!(:match1) { FactoryBot.create(:match, :finished, court: court) }
+        let!(:match2) { FactoryBot.create(:match, court: court) }
+
+        it 'Renders edit_score template' do
+          expect(subject).to render_template :edit_score
+        end
+      end
+
+      context 'There is other match being played on the court' do
+        let!(:match1) { FactoryBot.create(:match, :started, court: court) }
+        let!(:match2) { FactoryBot.create(:match, court: court) }
+
+        it 'Redirects to court page' do
+          expect(subject).to redirect_to tournament_court_url(
+            tournament_id: court.tournament_id,
+            id: court.id
+          )
+        end
+      end
+    end
+
+    context 'Match does not exist on given tournament' do
+      let!(:court) { FactoryBot.create(:court) }
+      let!(:another_tournament_court) { FactoryBot.create(:court) }
+      let!(:match) { FactoryBot.create(:match, court: another_tournament_court) }
+      let(:parameters) { { tournament_id: court.tournament.id, id: match.id } }
+
+      it 'Raises error' do
+        expect{subject}.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe 'PATCH update_score' do

@@ -3,6 +3,9 @@ class CourtsController < ApplicationController
   before_action :set_tournament_progress
 
   def show
+    @court_occupations = {}
+    court_matches_in_progress_count = @court.matches.in_progress.count
+    @court_occupations[@court.id] = court_matches_in_progress_count if court_matches_in_progress_count > 0
     @court_public_keys = [@court.public_key]
     store_location
   end
@@ -34,6 +37,5 @@ class CourtsController < ApplicationController
 
     @court = @tournament.courts.find(params[:id])
     @matches_updatable = policy(@court.tournament).update_matches?
-    @scores_updatable = policy(@court.tournament).update_scores?
   end
 end

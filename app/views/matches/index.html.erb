@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 <%= render 'shared/navbar' %>
 <p>
-  <% if policy(Match).create? %>
+  <% if policy(@tournament).manage? %>
     <%= link_to t('.add_match'), new_tournament_match_path(@tournament), class: 'btn btn-sm btn-success my-1' %>
   <% end %>
   <span class="float-right"><strong><%= t '.all_planned_matches' %></strong></span>
@@ -26,11 +26,11 @@
                 fa_icon 'check' if match.finished?
               end
 
-              cells += label_cell_for match, editable: @matches_updatable
+              cells += label_cell_for match, updatable: @matches_updatable
               cells += content_tag :td do
                 link_to match.court.label, tournament_court_path(match.tournament, match.court), class: 'btn btn-sm btn-success'
               end
-              cells += score_cell_for match, editable: @scores_updatable
+              cells += score_cell_for match, updatable: policy(match).update_score? && CourtDecorator.new(match.court).available_for?(match, @court_occupations)
               cells += content_tag :td do
                 NotBeforeInfo.result_for match
               end

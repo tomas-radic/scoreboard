@@ -10,7 +10,6 @@ module MatchUpdating
   def permitted_attributes
     attributes.require(:match).permit(
       'participant1', 'participant2',
-      'court_id',
       'not_before(1i)',
       'not_before(2i)',
       'not_before(3i)',
@@ -56,8 +55,11 @@ module MatchUpdating
     end
   end
 
-  def verify_court!
-    return if attributes[:match][:court_id].nil?
-    raise 'Court ID not known!' unless tournament.courts.ids.include? attributes[:match][:court_id]
+  def assign_court
+    match.court = court
+  end
+
+  def court
+    @court ||= tournament.courts.find attributes[:match][:court_id]
   end
 end

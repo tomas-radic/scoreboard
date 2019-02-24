@@ -3,7 +3,7 @@
 <%= render 'courts_switch' if @tournament.courts.count > 1 %>
 <hr>
 <p>
-  <% if policy(Match).create? %>
+  <% if policy(@tournament).manage? %>
     <%= link_to t('.add_match'), new_tournament_court_match_path(@tournament, @court), class: 'btn btn-sm btn-success my-1' %>
   <% end %>
   <span class="float-right">

@@ -118,7 +118,7 @@ describe CreateMatch do
     end
 
     it 'Raises error' do
-      expect{subject}.to raise_error 'Court ID not known!'
+      expect{subject}.to raise_error ActiveRecord::RecordNotFound
     end
   end
 end

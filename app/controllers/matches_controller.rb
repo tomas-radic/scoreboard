@@ -68,7 +68,6 @@ class MatchesController < ApplicationController
     authorize @match
 
     redirect_to_court unless CourtDecorator.new(@match.court).available_for? @match, court_occupations_of(@tournament)
-    @back_path = stored_location(fallback: tournament_path(@tournament))
     @game_sets_count = @match.game_sets.count
   end
 

@@ -58,7 +58,7 @@
         <%= submit_tag t('.submit'), class: 'btn btn-lg btn-success d-none d-sm-block' %>
       </p>
       <p class="content-center">
-        <%= link_to t('.quit'), @back_path %>
+        <%= link_to t('.quit'), tournament_court_path(@tournament, @match.court) %>
       </p>
     </div>
   </div>

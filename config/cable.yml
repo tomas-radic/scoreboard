@@ -8,5 +8,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://h:p5fd1c89b02acb12ea6a85ed3a881cf297d6930524a4ba0c7f5766499cf013822@ec2-63-32-250-106.eu-west-1.compute.amazonaws.com:13739
+  url: redis://redistogo:9c050c11f3866089bcd76818efc9f79e@porgy.redistogo.com:11461/
   # channel_prefix: scoreboard_production
